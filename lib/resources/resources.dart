@@ -107,4 +107,47 @@ class ResourceUtils {
         return "";
     }
   }
+
+  static String getFirstStringByMeatThickness(double thickness) {
+    if (thickness == 0.0){
+      return '이제 두께(\u21D5)를 측정';
+    } else if (thickness <= 0.8) {
+      return '입에서 사르르';
+    } else if (thickness <= 1.5) {
+      return '금방 구워지는';
+    } else if (thickness <= 2.0) {
+      return '호불호 안 갈리는';
+    } else if (thickness <= 3.0) {
+      return '식감이 살아있는';
+    } else if (thickness <= 5.0) {
+      return '육즙이 팡팡';
+    }
+    return "";
+  }
+
+  static String getCenterStringByMeatThickness(double thickness) {
+    if (thickness == 0.0){
+      return '';
+    } else if (thickness <= 0.8) {
+      return '얇은';
+    } else if (thickness <= 1.5) {
+      return '조금 얇은';
+    } else if (thickness <= 2.0) {
+      return '보통 두께의';
+    } else if (thickness <= 3.0) {
+      return '조금 두꺼운';
+    } else if (thickness <= 5.0) {
+      return '두꺼운';
+    }
+    return "";
+  }
+
+  static String getLastStringByMeatThickness(double thickness) {
+    if (thickness == 0.0){
+      return '해주세요';
+    } else if (thickness <= 5.0) {
+      return '고기네요';
+    }
+    return "";
+  }
 }

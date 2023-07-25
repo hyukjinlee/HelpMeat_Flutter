@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:helpmeat/resources/resources.dart';
-import 'package:helpmeat/widgets/grill_meat_widget.dart';
 import 'package:helpmeat/screens/arguments/grill_meat_arguments.dart';
-import 'dart:math' as math;
+import 'package:helpmeat/widgets/grill_meat_widget.dart';
 
-import 'package:scroll_to_index/scroll_to_index.dart';
-
-/// [3] 두께 선택 화면 : 0.5 ~ 4.5 cm
+/// [3] 두께 선택 화면 : 0.1 ~ 5.0 cm
 class SelectThicknessScreen extends StatelessWidget {
   final GrillMeatArguments args;
 
@@ -16,40 +13,34 @@ class SelectThicknessScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     print('고기 : ${args.meatType}, 부위 : ${args.meatInfoDetail?.name} (${args.meatInfoDetail?.meatPartType})');
 
-    double degrees = 270;
-    double radius = degrees * math.pi / 180;
+    String firstText = ResourceUtils.getFirstStringByMeatThickness(0.0);
+    String centerText = ResourceUtils.getCenterStringByMeatThickness(0.0);
+    String lastText = ResourceUtils.getLastStringByMeatThickness(0.0);
+
+    List<Widget> textViewList = [];
+    addTextWidgetToList(textViewList, firstText, 25);
+    if (centerText.isNotEmpty) {
+      addTextWidgetToList(textViewList,centerText, 35);
+    }
+    addTextWidgetToList(textViewList, lastText, 25);
 
     return Scaffold(
       // appBar: AppBar(),
         body: GrillMeatLayout(
           top: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: const [
-                  Text(
-                    style: TextStyle(fontSize: 25),
-                    '이제 두께(\u21D5)를 측정',
-                  ),
-                  Text(
-                    style: TextStyle(fontSize: 25),
-                    '해주세요',
-                  )
-                ],
-              ),
-              Image(
-                image: AssetImage('assets/beef_rare.png'),
-                width: 150,
-                height: 150,
-              ),
-            ],
+            children: textViewList,
           ),
-          middle: Column(
+          middle: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Transform.rotate(angle: radius,child: Ruler(),)
+            children: const [
+              Text("TO DO"),
+              Image(
+                image: AssetImage('assets/ruler.png'),
+                width: 100,
+                height: double.infinity,
+              ),
             ],
           ),
           bottom: Container(
@@ -67,64 +58,11 @@ class SelectThicknessScreen extends StatelessWidget {
         )
     );
   }
-}
 
-class Ruler extends StatefulWidget {
-  const Ruler({Key? key}) : super(key: key);
-
-  @override
-  State<Ruler> createState() => _RulerState();
-}
-
-class _RulerState extends State<Ruler> {
-  double _counter = 0.0;
-  @override
-  Widget build(BuildContext context) {
-    return SliderTheme(
-        data: SliderThemeData(
-            tickMarkShape: SliderTickMarkShape.noTickMark,
-            trackHeight: 12,
-            inactiveTrackColor: Colors.amber[200],
-            activeTrackColor: Colors.amber,
-            thumbColor: Colors.white,
-            thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 10)),
-        child: Stack(
-          children: [
-            showTrack(),
-            Padding(
-              padding: const EdgeInsets.only(top: 12),
-              child: Slider(
-                value: _counter,
-                min: 0,
-                max: 5,
-                divisions: 5,
-                onChanged: (value) {
-                  setState(() {
-                    _counter = value;
-                  });
-                },
-              ),
-            )
-          ],
-        ));
-  }
-
-  Widget showTrack(){
-    return Padding(padding: const EdgeInsets.fromLTRB(23, 23, 23, 23),
-      child: Row(
-        children: [
-          Container( height:6.0, width:2.0, color:Colors.blueGrey,),
-          const Spacer(),
-          Container( height:6.0, width:2.0, color:Colors.blueGrey,),
-          const Spacer(),
-          Container( height:6.0, width:2.0, color:Colors.blueGrey,),
-          const Spacer(),
-          Container( height:6.0, width:2.0, color:Colors.blueGrey,),
-          const Spacer(),
-          Container( height:6.0, width:2.0, color:Colors.blueGrey,),
-          const Spacer(),
-          Container( height:6.0, width:2.0, color:Colors.blueGrey,),
-        ],
-      ),);
+  void addTextWidgetToList(List<Widget> list, String text, double fontSize) {
+    list.add(Text(
+      style: TextStyle(fontSize: fontSize),
+      text,
+    ));
   }
 }
