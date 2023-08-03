@@ -110,7 +110,7 @@ class ResourceUtils {
 
   static String getFirstStringByMeatThickness(double thickness) {
     if (thickness == 0.0){
-      return '이제 두께(\u21D5)를 측정';
+      return '이제 화살표를 움직여';
     } else if (thickness <= 0.8) {
       return '입에서 사르르';
     } else if (thickness <= 1.5) {
@@ -144,7 +144,7 @@ class ResourceUtils {
 
   static String getLastStringByMeatThickness(double thickness) {
     if (thickness == 0.0){
-      return '해주세요';
+      return '두께(\u21D5)를 측정해주세요';
     } else if (thickness <= 5.0) {
       return '고기네요';
     }

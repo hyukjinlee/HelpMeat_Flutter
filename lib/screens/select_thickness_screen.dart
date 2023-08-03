@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:helpmeat/navigators/navigator.dart';
 import 'package:helpmeat/screens/arguments/grill_meat_arguments.dart';
 import 'package:helpmeat/utils/resources.dart';
 import 'package:helpmeat/utils/util.dart';
@@ -25,8 +26,6 @@ class _SelectThicknessScreenState extends State<SelectThicknessScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // print('고기 : ${widget.args.meatType}, 부위 : ${widget.args.meatInfoDetail?.name} (${widget.args.meatInfoDetail?.meatPartType})');
-
     String firstText = ResourceUtils.getFirstStringByMeatThickness(_thickness);
     String centerText = ResourceUtils.getCenterStringByMeatThickness(_thickness);
     String lastText = ResourceUtils.getLastStringByMeatThickness(_thickness);
@@ -130,7 +129,10 @@ class _SelectThicknessScreenState extends State<SelectThicknessScreen> {
               minimumSize: Size(double.infinity, double.infinity)),
           child:
               Text("다음", style: TextStyle(color: Colors.white, fontSize: 25)),
-          onPressed: () {},
+          onPressed: () {
+            widget.args.thickness = _thickness;
+            AppNavigator.push(context, Screens.SELECT_DONENESS_SCREEN, widget.args);
+          },
         ),
       ),
     ));
