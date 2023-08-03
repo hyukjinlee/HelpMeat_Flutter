@@ -55,3 +55,36 @@ class VerticalTextImageUI extends StatelessWidget {
     );
   }
 }
+
+class ListViewItem extends StatelessWidget {
+  final bool isSelected;
+  final String text;
+  const ListViewItem({Key? key, required this.isSelected, required this.text}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    Widget item;
+    Color textColor;
+
+    if (isSelected) {
+      textColor = AppThemes.mainPink;
+    } else {
+      textColor = AppThemes.mainPink_40;
+    }
+    item = Center(
+      child: Text(text,
+          style: TextStyle(color: textColor, fontSize: 40),
+          textAlign: TextAlign.center),
+    );
+
+    if (isSelected) {
+      item = Container(
+        decoration: BoxDecoration(
+            border: Border.all(color: AppThemes.mainPink, width: 5),
+            borderRadius: BorderRadius.all(AppThemes.radius)),
+        child: item,
+      );
+    }
+    return item;
+  }
+}
