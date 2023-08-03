@@ -3,7 +3,7 @@ import 'package:helpmeat/navigators/navigator.dart';
 import 'package:helpmeat/screens/arguments/grill_meat_arguments.dart';
 import 'package:helpmeat/utils/resources.dart';
 import 'package:helpmeat/widgets/grill_meat_widget.dart';
-import 'package:helpmeat/widgets/next_button_widget.dart';
+import 'package:helpmeat/widgets/ui_widget.dart';
 
 /// [4] 굽기 정도 선택 화면 : RARE / MEDIUM / WELL DONE 등..
 class SelectDonenessScreen extends StatefulWidget {

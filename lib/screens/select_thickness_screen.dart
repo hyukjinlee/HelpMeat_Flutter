@@ -4,7 +4,7 @@ import 'package:helpmeat/screens/arguments/grill_meat_arguments.dart';
 import 'package:helpmeat/utils/resources.dart';
 import 'package:helpmeat/utils/util.dart';
 import 'package:helpmeat/widgets/grill_meat_widget.dart';
-import 'package:helpmeat/widgets/next_button_widget.dart';
+import 'package:helpmeat/widgets/ui_widget.dart';
 
 /// [3] 두께 선택 화면 : 0.1 ~ 5.0 cm
 class SelectThicknessScreen extends StatefulWidget {

@@ -3,7 +3,7 @@ import 'package:helpmeat/navigators/navigator.dart';
 import 'package:helpmeat/screens/arguments/grill_meat_arguments.dart';
 import 'package:helpmeat/utils/resources.dart';
 import 'package:helpmeat/widgets/grill_meat_widget.dart';
-import 'package:helpmeat/widgets/next_button_widget.dart';
+import 'package:helpmeat/widgets/ui_widget.dart';
 
 /// [2] 부위 선택 화면 : 등심/살치/안심 등..
 class SelectPartScreen extends StatefulWidget {
