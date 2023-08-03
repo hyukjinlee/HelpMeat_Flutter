@@ -1,68 +1,153 @@
 import 'package:flutter/material.dart';
-import 'package:helpmeat/resources/resources.dart';
 import 'package:helpmeat/screens/arguments/grill_meat_arguments.dart';
+import 'package:helpmeat/utils/resources.dart';
+import 'package:helpmeat/utils/util.dart';
 import 'package:helpmeat/widgets/grill_meat_widget.dart';
 
 /// [3] 두께 선택 화면 : 0.1 ~ 5.0 cm
-class SelectThicknessScreen extends StatelessWidget {
+class SelectThicknessScreen extends StatefulWidget {
   final GrillMeatArguments args;
 
   SelectThicknessScreen({Key? key, required this.args}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    print('고기 : ${args.meatType}, 부위 : ${args.meatInfoDetail?.name} (${args.meatInfoDetail?.meatPartType})');
+  State<SelectThicknessScreen> createState() => _SelectThicknessScreenState();
+}
 
-    String firstText = ResourceUtils.getFirstStringByMeatThickness(0.0);
-    String centerText = ResourceUtils.getCenterStringByMeatThickness(0.0);
-    String lastText = ResourceUtils.getLastStringByMeatThickness(0.0);
+class _SelectThicknessScreenState extends State<SelectThicknessScreen> {
+  Offset _position = Offset(0.0, 110.0);
+  final GlobalKey _contentsBoxKey = GlobalKey();
+  final GlobalKey _rulerKey = GlobalKey();
+
+  Rect _rulerRect = Rect.zero;
+  double _yDeltaFor1mm = 0;
+  double _thickness = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    // print('고기 : ${widget.args.meatType}, 부위 : ${widget.args.meatInfoDetail?.name} (${widget.args.meatInfoDetail?.meatPartType})');
+
+    String firstText = ResourceUtils.getFirstStringByMeatThickness(_thickness);
+    String centerText = ResourceUtils.getCenterStringByMeatThickness(_thickness);
+    String lastText = ResourceUtils.getLastStringByMeatThickness(_thickness);
+
+    String thicknessText;
+    if (_thickness >= 0.1) {
+      thicknessText = '${_thickness}cm';
+    } else {
+      thicknessText = '';
+    }
 
     List<Widget> textViewList = [];
     addTextWidgetToList(textViewList, firstText, 25);
     if (centerText.isNotEmpty) {
-      addTextWidgetToList(textViewList,centerText, 35);
+      addTextWidgetToList(textViewList, centerText, 45);
     }
     addTextWidgetToList(textViewList, lastText, 25);
 
+    double signWidth = 100.0;
+    double signHeight = 50.0;
+
     return Scaffold(
-      // appBar: AppBar(),
+        // appBar: AppBar(),
         body: GrillMeatLayout(
-          top: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: textViewList,
-          ),
-          middle: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: const [
-              Text("TO DO"),
-              Image(
-                image: AssetImage('assets/ruler.png'),
-                width: 100,
-                height: double.infinity,
+      top: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: textViewList,
+      ),
+      middle: Row(
+        key: _contentsBoxKey,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          SizedBox(
+            width: signWidth,
+            height: double.infinity,
+            child: GestureDetector(
+              child: Stack(
+                children: [
+                  Positioned(
+                    top: _position.dy,
+                    child: Stack(
+                      children: [
+                        Image(
+                          image: AssetImage('assets/horizontal_sign.png'),
+                          width: signWidth,
+                          height: signHeight,
+                        ),
+                        Positioned.fill(
+                          child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: Padding(
+                              padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                              child: Text(
+                                style: TextStyle(fontSize: 25, color: Colors.white),
+                                thicknessText,
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
-          bottom: Container(
-            padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  shape: StadiumBorder(),
-                  backgroundColor: AppThemes.mainPink,
-                  minimumSize: Size(double.infinity, double.infinity)),
-              child: Text("다음",
-                  style: TextStyle(color: Colors.white, fontSize: 25)),
-              onPressed: () {},
+              onPanStart: (details) => {
+                if (_rulerRect == Rect.zero) {
+                  initBoundary(details.localPosition, signHeight)
+                }
+              },
+              onPanUpdate: (details) => {
+                setState(() {
+                  double signPositionY = details.localPosition.dy + (signHeight / 2);
+                  if (signPositionY >= _rulerRect.top && signPositionY <= _rulerRect.bottom) {
+                    _position = details.localPosition;
+                    _thickness = ((signPositionY - _rulerRect.top) / _yDeltaFor1mm).round() / 10.0; // mm to cm
+
+                    if (_thickness == 0) {
+                      _thickness = 0.1;
+                    }
+                    print('_thickness : $_thickness');
+                  }
+                })
+              },
             ),
           ),
-        )
-    );
+          Image(
+            key: _rulerKey,
+            image: AssetImage('assets/ruler.png'),
+            width: 90,
+            height: 280,
+          ),
+        ],
+      ),
+      bottom: Container(
+        padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+              shape: StadiumBorder(),
+              backgroundColor: AppThemes.mainPink,
+              minimumSize: Size(double.infinity, double.infinity)),
+          child:
+              Text("다음", style: TextStyle(color: Colors.white, fontSize: 25)),
+          onPressed: () {},
+        ),
+      ),
+    ));
   }
 
   void addTextWidgetToList(List<Widget> list, String text, double fontSize) {
-    list.add(Text(
-      style: TextStyle(fontSize: fontSize),
-      text,
+    list.add(Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Text(
+        style: TextStyle(fontSize: fontSize),
+        text,
+      ),
     ));
+  }
+
+  void initBoundary(Offset signOffset, double signHeight) {
+    _rulerRect = Utils.getWidgetLocalRect(_rulerKey, _contentsBoxKey);
+    _yDeltaFor1mm = _rulerRect.height / 50.0;
   }
 }

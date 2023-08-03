@@ -129,15 +129,15 @@ class ResourceUtils {
     if (thickness == 0.0){
       return '';
     } else if (thickness <= 0.8) {
-      return '얇은';
+      return '"얇은"';
     } else if (thickness <= 1.5) {
-      return '조금 얇은';
+      return '"조금 얇은"';
     } else if (thickness <= 2.0) {
-      return '보통 두께의';
+      return '"보통 두께의"';
     } else if (thickness <= 3.0) {
-      return '조금 두꺼운';
+      return '"조금 두꺼운"';
     } else if (thickness <= 5.0) {
-      return '두꺼운';
+      return '"두꺼운"';
     }
     return "";
   }

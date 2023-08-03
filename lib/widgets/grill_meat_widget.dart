@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:helpmeat/resources/resources.dart';
-import 'package:helpmeat/screens/arguments/grill_meat_arguments.dart';
+import 'package:helpmeat/utils/resources.dart';
 
 class GrillMeatLayout extends StatelessWidget {
   final Widget top;
