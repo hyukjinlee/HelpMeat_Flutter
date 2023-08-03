@@ -33,29 +33,9 @@ class _SelectDonenessScreenState extends State<SelectDonenessScreen> {
     return Scaffold(
         // appBar: AppBar(),
         body: GrillMeatLayout(
-      top: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: const [
-              Text(
-                style: TextStyle(fontSize: 25),
-                '원하는 굽기 정도를',
-              ),
-              Text(
-                style: TextStyle(fontSize: 25),
-                '골라주세요',
-              )
-            ],
-          ),
-          Image(
-            image: AssetImage(ResourceUtils.getMeatWithDonenessImagePath(widget.args.meatType, donenessInfoList[selectedItem].donenessType)),
-            width: 150,
-            height: 150,
-          ),
-        ],
+      top: VerticalTextImageUI(
+        textList: getIndicateTextList(),
+        imagePath: getIndicateImagePath(),
       ),
       middle: ListWheelScrollView.useDelegate(
         itemExtent: 60,
@@ -106,5 +86,16 @@ class _SelectDonenessScreenState extends State<SelectDonenessScreen> {
       );
     }
     return item;
+  }
+
+  List<String> getIndicateTextList() {
+    return [
+      '원하는 굽기 정도를',
+      '골라주세요'
+    ];
+  }
+
+  String getIndicateImagePath() {
+    return ResourceUtils.getMeatWithDonenessImagePath(widget.args.meatType, donenessInfoList[selectedItem].donenessType);
   }
 }

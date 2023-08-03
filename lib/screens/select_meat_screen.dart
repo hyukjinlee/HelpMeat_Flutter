@@ -3,6 +3,7 @@ import 'package:helpmeat/navigators/navigator.dart';
 import 'package:helpmeat/screens/arguments/grill_meat_arguments.dart';
 import 'package:helpmeat/utils/resources.dart';
 import 'package:helpmeat/widgets/grill_meat_widget.dart';
+import 'package:helpmeat/widgets/ui_widget.dart';
 
 /// [1] 고기 굽기 화면 : 돼지고기 / 소고기 선택
 class SelectMeatScreen extends StatelessWidget {
@@ -14,29 +15,9 @@ class SelectMeatScreen extends StatelessWidget {
     return Scaffold(
         // appBar: AppBar(),
         body: GrillMeatLayout(
-      top: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: const [
-              Text(
-                style: TextStyle(fontSize: 25),
-                '먼저, 고기를',
-              ),
-              Text(
-                style: TextStyle(fontSize: 25),
-                '선택해주세요',
-              )
-            ],
-          ),
-          Image(
-            image: AssetImage('assets/question_mark.png'),
-            width: 150,
-            height: 150,
-          ),
-        ],
+      top: VerticalTextImageUI(
+        textList: getIndicateTextList(),
+        imagePath: getIndicateImagePath(),
       ),
       middle: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -53,6 +34,17 @@ class SelectMeatScreen extends StatelessWidget {
       ),
       bottom: SizedBox(),
     ));
+  }
+
+  List<String> getIndicateTextList() {
+    return [
+      '먼저, 고기를',
+      '선택해주세요'
+    ];
+  }
+
+  String getIndicateImagePath() {
+    return 'assets/question_mark.png';
   }
 }
 
