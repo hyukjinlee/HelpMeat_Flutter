@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:helpmeat/screens/arguments/grill_meat_arguments.dart';
 import 'package:helpmeat/utils/resources.dart';
 import 'package:helpmeat/widgets/grill_meat_widget.dart';
+import 'package:helpmeat/widgets/next_button_widget.dart';
 
 /// [4] 굽기 정도 선택 화면 : RARE / MEDIUM / WELL DONE 등..
 class SelectDonenessScreen extends StatefulWidget {
@@ -55,19 +56,10 @@ class _SelectDonenessScreenState extends State<SelectDonenessScreen> {
           });
         },
       ),
-      bottom: Container(
-        padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-              shape: StadiumBorder(),
-              backgroundColor: AppThemes.mainPink,
-              minimumSize: Size(double.infinity, double.infinity)),
-          child: Text("다음",
-              style: TextStyle(color: Colors.white, fontSize: 25)),
-          onPressed: () {
+      bottom: NextButton(
+        onPressed: () {
 
-          },
-        ),
+        },
       ),
     ));
   }

@@ -3,6 +3,7 @@ import 'package:helpmeat/navigators/navigator.dart';
 import 'package:helpmeat/screens/arguments/grill_meat_arguments.dart';
 import 'package:helpmeat/utils/resources.dart';
 import 'package:helpmeat/widgets/grill_meat_widget.dart';
+import 'package:helpmeat/widgets/next_button_widget.dart';
 
 /// [2] 부위 선택 화면 : 등심/살치/안심 등..
 class SelectPartScreen extends StatefulWidget {
@@ -55,20 +56,11 @@ class _SelectPartScreenState extends State<SelectPartScreen> {
           });
         },
       ),
-      bottom: Container(
-        padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-              shape: StadiumBorder(),
-              backgroundColor: AppThemes.mainPink,
-              minimumSize: Size(double.infinity, double.infinity)),
-          child: Text("다음",
-              style: TextStyle(color: Colors.white, fontSize: 25)),
-          onPressed: () {
-            widget.args.meatInfoDetail = meatInfoList[selectedItem];
-            AppNavigator.push(context, Screens.SELECT_THICKNESS_SCREEN, widget.args);
-          },
-        ),
+      bottom: NextButton(
+        onPressed: () {
+          widget.args.meatInfoDetail = meatInfoList[selectedItem];
+          AppNavigator.push(context, Screens.SELECT_THICKNESS_SCREEN, widget.args);
+        },
       ),
     ));
   }

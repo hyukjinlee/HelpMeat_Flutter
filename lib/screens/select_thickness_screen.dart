@@ -4,6 +4,7 @@ import 'package:helpmeat/screens/arguments/grill_meat_arguments.dart';
 import 'package:helpmeat/utils/resources.dart';
 import 'package:helpmeat/utils/util.dart';
 import 'package:helpmeat/widgets/grill_meat_widget.dart';
+import 'package:helpmeat/widgets/next_button_widget.dart';
 
 /// [3] 두께 선택 화면 : 0.1 ~ 5.0 cm
 class SelectThicknessScreen extends StatefulWidget {
@@ -26,10 +27,6 @@ class _SelectThicknessScreenState extends State<SelectThicknessScreen> {
 
   @override
   Widget build(BuildContext context) {
-    String firstText = ResourceUtils.getFirstStringByMeatThickness(_thickness);
-    String centerText = ResourceUtils.getCenterStringByMeatThickness(_thickness);
-    String lastText = ResourceUtils.getLastStringByMeatThickness(_thickness);
-
     String thicknessText;
     if (_thickness >= 0.1) {
       thicknessText = '${_thickness}cm';
@@ -37,24 +34,13 @@ class _SelectThicknessScreenState extends State<SelectThicknessScreen> {
       thicknessText = '';
     }
 
-    List<Widget> textViewList = [];
-    addTextWidgetToList(textViewList, firstText, 25);
-    if (centerText.isNotEmpty) {
-      addTextWidgetToList(textViewList, centerText, 45);
-    }
-    addTextWidgetToList(textViewList, lastText, 25);
-
     double signWidth = 100.0;
     double signHeight = 50.0;
 
     return Scaffold(
         // appBar: AppBar(),
         body: GrillMeatLayout(
-      top: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: textViewList,
-      ),
+      top: IndicateText(thickness: _thickness,),
       middle: Row(
         key: _contentsBoxKey,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -62,54 +48,60 @@ class _SelectThicknessScreenState extends State<SelectThicknessScreen> {
           SizedBox(
             width: signWidth,
             height: double.infinity,
-            child: GestureDetector(
-              child: Stack(
-                children: [
-                  Positioned(
-                    top: _position.dy,
-                    child: Stack(
-                      children: [
-                        Image(
-                          image: AssetImage('assets/horizontal_sign.png'),
-                          width: signWidth,
-                          height: signHeight,
-                        ),
-                        Positioned.fill(
-                          child: Align(
-                            alignment: Alignment.centerLeft,
-                            child: Padding(
-                              padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                              child: Text(
-                                style: TextStyle(fontSize: 25, color: Colors.white),
-                                thicknessText,
-                              ),
+            child: Stack(
+              children: [
+                GestureDetector(
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        top: _position.dy,
+                        child: Stack(
+                          children: [
+                            Image(
+                              image: AssetImage('assets/horizontal_sign.png'),
+                              width: signWidth,
+                              height: signHeight,
                             ),
-                          ),
-                        )
-                      ],
-                    ),
+                            Positioned.fill(
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: Padding(
+                                  padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                                  child: Text(
+                                    style: TextStyle(fontSize: 25, color: Colors.white),
+                                    thicknessText,
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-              onPanStart: (details) => {
-                if (_rulerRect == Rect.zero) {
-                  initBoundary(details.localPosition, signHeight)
-                }
-              },
-              onPanUpdate: (details) => {
-                setState(() {
-                  double signPositionY = details.localPosition.dy + (signHeight / 2);
-                  if (signPositionY >= _rulerRect.top && signPositionY <= _rulerRect.bottom) {
-                    _position = details.localPosition;
-                    _thickness = ((signPositionY - _rulerRect.top) / _yDeltaFor1mm).round() / 10.0; // mm to cm
-
-                    if (_thickness == 0) {
-                      _thickness = 0.1;
+                  onPanStart: (details) => {
+                    if (_rulerRect == Rect.zero) {
+                      initBoundary(details.localPosition, signHeight)
                     }
-                    print('_thickness : $_thickness');
-                  }
-                })
-              },
+                  },
+                  onPanUpdate: (details) => {
+                    setState(() {
+                      double signPositionY = details.localPosition.dy + (signHeight / 2);
+                      if (_position != details.localPosition &&
+                          signPositionY >= _rulerRect.top && signPositionY <= _rulerRect.bottom) {
+                        _position = details.localPosition;
+                        _thickness = ((signPositionY - _rulerRect.top) / _yDeltaFor1mm).round() / 10.0; // mm to cm
+
+                        if (_thickness == 0) {
+                          _thickness = 0.1;
+                        }
+                        print('_thickness : $_thickness');
+                      }
+                    })
+                  },
+                ),
+                HelpText()
+              ],
             ),
           ),
           Image(
@@ -120,22 +112,46 @@ class _SelectThicknessScreenState extends State<SelectThicknessScreen> {
           ),
         ],
       ),
-      bottom: Container(
-        padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-              shape: StadiumBorder(),
-              backgroundColor: AppThemes.mainPink,
-              minimumSize: Size(double.infinity, double.infinity)),
-          child:
-              Text("다음", style: TextStyle(color: Colors.white, fontSize: 25)),
-          onPressed: () {
+      bottom: NextButton(
+        onPressed: () {
+          if (_thickness >= 0.1) {
             widget.args.thickness = _thickness;
             AppNavigator.push(context, Screens.SELECT_DONENESS_SCREEN, widget.args);
-          },
-        ),
+          }
+        },
       ),
     ));
+  }
+
+  void initBoundary(Offset signOffset, double signHeight) {
+    _rulerRect = Utils.getWidgetLocalRect(_rulerKey, _contentsBoxKey);
+    _yDeltaFor1mm = _rulerRect.height / 50.0;
+  }
+}
+
+class IndicateText extends StatelessWidget {
+  final double thickness;
+
+  const IndicateText({Key? key, required this.thickness}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    String firstText = ResourceUtils.getFirstStringByMeatThickness(thickness);
+    String centerText = ResourceUtils.getCenterStringByMeatThickness(thickness);
+    String lastText = ResourceUtils.getLastStringByMeatThickness(thickness);
+
+    List<Widget> textViewList = [];
+    addTextWidgetToList(textViewList, firstText, 25);
+    if (centerText.isNotEmpty) {
+      addTextWidgetToList(textViewList, centerText, 45);
+    }
+    addTextWidgetToList(textViewList, lastText, 25);
+
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: textViewList,
+    );
   }
 
   void addTextWidgetToList(List<Widget> list, String text, double fontSize) {
@@ -147,9 +163,36 @@ class _SelectThicknessScreenState extends State<SelectThicknessScreen> {
       ),
     ));
   }
+}
 
-  void initBoundary(Offset signOffset, double signHeight) {
-    _rulerRect = Utils.getWidgetLocalRect(_rulerKey, _contentsBoxKey);
-    _yDeltaFor1mm = _rulerRect.height / 50.0;
+
+class HelpText extends StatelessWidget {
+  const HelpText({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned.fill(
+      child: Align(
+        alignment: Alignment.bottomCenter,
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(0, 0, 0, 40),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: const [
+              Text(
+                style: TextStyle(fontSize: 25, color: AppThemes.mainPink_40),
+                '위/아래로',
+              ),
+              Text(
+                style: TextStyle(fontSize: 25, color: AppThemes.mainPink_40),
+                '이동!',
+              )
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
+
