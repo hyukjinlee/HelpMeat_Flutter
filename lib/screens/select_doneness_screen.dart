@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:helpmeat/navigators/navigator.dart';
 import 'package:helpmeat/screens/arguments/grill_meat_arguments.dart';
 import 'package:helpmeat/utils/resources.dart';
 import 'package:helpmeat/widgets/grill_meat_widget.dart';
@@ -15,37 +16,53 @@ class SelectDonenessScreen extends StatefulWidget {
 }
 
 class _SelectDonenessScreenState extends State<SelectDonenessScreen> {
-  List<MeatInfo> meatInfoList = <MeatInfo>[];
+  List<DonenessInfo> donenessInfoList = <DonenessInfo>[];
   int selectedItem = 0;
 
   void initResources() {
-    if (meatInfoList.isEmpty) {
-      meatInfoList = ResourceUtils.getMeatPartInfoList(widget.args.meatType);
+    if (donenessInfoList.isEmpty) {
+      donenessInfoList = ResourceUtils.getDonenessInfoList(widget.args.meatType);
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    print('고기 : ${widget.args.meatType}, 부위 : ${widget.args.meatInfoDetail?.name} (${widget.args.meatInfoDetail?.meatPartType}), 두께 : ${widget.args.thickness}');
+    // print('고기 : ${widget.args.meatType}, 부위 : ${widget.args.meatInfoDetail?.name} (${widget.args.meatInfoDetail?.meatPartType}), 두께 : ${widget.args.thickness}');
     initResources();
 
     return Scaffold(
         // appBar: AppBar(),
         body: GrillMeatLayout(
-      top: Center(
-        child: Image(
-          image: AssetImage(ResourceUtils.getMeatPartImagePath(
-              meatInfoList[selectedItem].meatPartType)),
-          width: 300,
-          height: 300,
-        ),
+      top: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: const [
+              Text(
+                style: TextStyle(fontSize: 25),
+                '원하는 굽기 정도를',
+              ),
+              Text(
+                style: TextStyle(fontSize: 25),
+                '골라주세요',
+              )
+            ],
+          ),
+          Image(
+            image: AssetImage(ResourceUtils.getMeatWithDonenessImagePath(widget.args.meatType, donenessInfoList[selectedItem].donenessType)),
+            width: 150,
+            height: 150,
+          ),
+        ],
       ),
       middle: ListWheelScrollView.useDelegate(
         itemExtent: 60,
         diameterRatio: 2,
         squeeze: 0.7,
         childDelegate: ListWheelChildBuilderDelegate(
-          childCount: meatInfoList.length,
+          childCount: donenessInfoList.length,
           builder: (context, index) {
             return getListViewItem(index == selectedItem, index);
           },
@@ -58,7 +75,8 @@ class _SelectDonenessScreenState extends State<SelectDonenessScreen> {
       ),
       bottom: NextButton(
         onPressed: () {
-
+          widget.args.donenessInfo = donenessInfoList[selectedItem];
+          AppNavigator.push(context, Screens.SELECT_THICKNESS_SCREEN, widget.args);
         },
       ),
     ));
@@ -74,7 +92,7 @@ class _SelectDonenessScreenState extends State<SelectDonenessScreen> {
       textColor = AppThemes.mainPink_40;
     }
     item = Center(
-      child: Text(meatInfoList[index].name,
+      child: Text(donenessInfoList[index].name,
           style: TextStyle(color: textColor, fontSize: 40),
           textAlign: TextAlign.center),
     );

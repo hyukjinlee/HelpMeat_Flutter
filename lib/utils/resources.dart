@@ -16,9 +16,9 @@ class ResourceUtils {
   static String getMeatImagePath(MeatType meatType) {
     switch (meatType) {
       case MeatType.MEAT_TYPE_FORK:
-        return 'assets/fork_rare.png';
+        return 'assets/fork.png';
       case MeatType.MEAT_TYPE_BEEF:
-        return 'assets/beef_rare.png';
+        return 'assets/beef.png';
       default:
         return "";
     }
@@ -108,6 +108,7 @@ class ResourceUtils {
     }
   }
 
+  /// Thickness Screen
   static String getFirstStringByMeatThickness(double thickness) {
     if (thickness == 0.0){
       return '이제 화살표를 움직여';
@@ -149,5 +150,58 @@ class ResourceUtils {
       return '고기네요';
     }
     return "";
+  }
+
+  /// Doneness Screen
+  static List<DonenessInfo> getDonenessInfoList(MeatType meatType) {
+    switch (meatType) {
+      case MeatType.MEAT_TYPE_BEEF:
+        return <DonenessInfo>[
+          DonenessInfo(name: "RARE", donenessType: DonenessType.RARE),
+          DonenessInfo(name: "MEDIUM RARE", donenessType: DonenessType.MEDIUM_RARE),
+          DonenessInfo(name: "MEDIUM", donenessType: DonenessType.MEDIUM),
+          DonenessInfo(name: "WELL DONE", donenessType: DonenessType.WELLDONE),
+        ];
+
+      case MeatType.MEAT_TYPE_FORK:
+        return <DonenessInfo>[
+          DonenessInfo(name: "RARE", donenessType: DonenessType.RARE),
+          DonenessInfo(name: "MEDIUM", donenessType: DonenessType.MEDIUM),
+          DonenessInfo(name: "WELL DONE", donenessType: DonenessType.WELLDONE),
+        ];
+      default:
+        throw Exception();
+    }
+  }
+
+  static String getMeatWithDonenessImagePath(MeatType meatType, DonenessType donenessType) {
+    switch (meatType) {
+      case MeatType.MEAT_TYPE_BEEF:
+        switch (donenessType) {
+          case DonenessType.RARE:
+            return 'assets/beef_rare.png';
+          case DonenessType.MEDIUM_RARE:
+            return 'assets/beef_medium_rare.png';
+          case DonenessType.MEDIUM:
+            return 'assets/beef_medium.png';
+          case DonenessType.WELLDONE:
+            return 'assets/beef_well_done.png';
+        }
+
+      case MeatType.MEAT_TYPE_FORK:
+        switch (donenessType) {
+          case DonenessType.RARE:
+            return 'assets/fork_rare.png';
+          case DonenessType.MEDIUM_RARE:
+            throw Exception();
+          case DonenessType.MEDIUM:
+            return 'assets/fork_medium.png';
+          case DonenessType.WELLDONE:
+            return 'assets/fork_well_done.png';
+        }
+
+      default:
+        throw Exception();
+    }
   }
 }

@@ -7,6 +7,7 @@ class GrillMeatArguments extends Arguments {
   MeatType meatType;
   MeatInfo? meatInfoDetail;
   double? thickness;
+  DonenessInfo? donenessInfo;
 
   // 생성자
   GrillMeatArguments(this.meatType);
@@ -46,4 +47,20 @@ class MeatInfo {
   const MeatInfo(
       { required this.name,
         required this.meatPartType,});
+}
+
+enum DonenessType {
+  RARE,
+  MEDIUM_RARE,
+  MEDIUM,
+  WELLDONE,
+}
+
+class DonenessInfo {
+  final String name;
+  final DonenessType donenessType;
+
+  const DonenessInfo(
+      { required this.name,
+        required this.donenessType,});
 }
