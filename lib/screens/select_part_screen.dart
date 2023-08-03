@@ -47,7 +47,7 @@ class _SelectPartScreenState extends State<SelectPartScreen> {
         childDelegate: ListWheelChildBuilderDelegate(
           childCount: meatInfoList.length,
           builder: (context, index) {
-            return getListViewItem(index == selectedItem, index);
+            return ListViewItem(isSelected: index == selectedItem, text: meatInfoList[index].name,);
           },
         ),
         onSelectedItemChanged: (index) {
@@ -63,31 +63,5 @@ class _SelectPartScreenState extends State<SelectPartScreen> {
         },
       ),
     ));
-  }
-
-  Widget getListViewItem(bool isSelected, int index) {
-    Widget item;
-    Color textColor;
-
-    if (isSelected) {
-      textColor = AppThemes.mainPink;
-    } else {
-      textColor = AppThemes.mainPink_40;
-    }
-    item = Center(
-      child: Text(meatInfoList[index].name,
-          style: TextStyle(color: textColor, fontSize: 40),
-          textAlign: TextAlign.center),
-    );
-
-    if (isSelected) {
-      item = Container(
-        decoration: BoxDecoration(
-            border: Border.all(color: AppThemes.mainPink, width: 5),
-            borderRadius: BorderRadius.all(AppThemes.radius)),
-        child: item,
-      );
-    }
-    return item;
   }
 }
