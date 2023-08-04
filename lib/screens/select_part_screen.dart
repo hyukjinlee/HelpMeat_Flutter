@@ -34,8 +34,7 @@ class _SelectPartScreenState extends State<SelectPartScreen> {
         body: GrillMeatLayout(
       top: Center(
         child: Image(
-          image: AssetImage(ResourceUtils.getMeatPartImagePath(
-              meatInfoList[selectedItem].meatPartType)),
+          image: AssetImage(meatInfoList[selectedItem].imagePath),
           width: 300,
           height: 300,
         ),
@@ -58,7 +57,7 @@ class _SelectPartScreenState extends State<SelectPartScreen> {
       ),
       bottom: NextButton(
         onPressed: () {
-          widget.args.meatInfoDetail = meatInfoList[selectedItem];
+          widget.args.meatPartType = meatInfoList[selectedItem].meatPartType;
           AppNavigator.push(context, Screens.SELECT_THICKNESS_SCREEN, widget.args);
         },
       ),

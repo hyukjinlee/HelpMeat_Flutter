@@ -5,9 +5,9 @@ class Arguments {
 
 class GrillMeatArguments extends Arguments {
   MeatType meatType;
-  MeatInfo? meatInfoDetail;
+  MeatPartType? meatPartType;
   double? thickness;
-  DonenessInfo? donenessInfo;
+  DonenessType? donenessType;
 
   // 생성자
   GrillMeatArguments(this.meatType);
@@ -43,10 +43,12 @@ enum MeatPartType {
 class MeatInfo {
   final String name;
   final MeatPartType meatPartType;
+  final String imagePath;
 
   const MeatInfo(
       { required this.name,
-        required this.meatPartType,});
+        required this.meatPartType,
+        required this.imagePath});
 }
 
 enum DonenessType {
@@ -59,8 +61,10 @@ enum DonenessType {
 class DonenessInfo {
   final String name;
   final DonenessType donenessType;
+  final String imagePath;
 
   const DonenessInfo(
       { required this.name,
-        required this.donenessType,});
+        required this.donenessType,
+        required this.imagePath});
 }

@@ -55,7 +55,7 @@ class _SelectDonenessScreenState extends State<SelectDonenessScreen> {
       ),
       bottom: NextButton(
         onPressed: () {
-          widget.args.donenessInfo = donenessInfoList[selectedItem];
+          widget.args.donenessType = donenessInfoList[selectedItem].donenessType;
           AppNavigator.push(context, Screens.SELECT_THICKNESS_SCREEN, widget.args);
         },
       ),
@@ -70,6 +70,6 @@ class _SelectDonenessScreenState extends State<SelectDonenessScreen> {
   }
 
   String getIndicateImagePath() {
-    return ResourceUtils.getMeatWithDonenessImagePath(widget.args.meatType, donenessInfoList[selectedItem].donenessType);
+    return donenessInfoList[selectedItem].imagePath;
   }
 }
