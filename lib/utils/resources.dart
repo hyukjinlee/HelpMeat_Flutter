@@ -130,4 +130,24 @@ class ResourceUtils {
         throw Exception();
     }
   }
+
+  /// Fire Screen
+  static List<FireInfo> getFireInfoList() {
+    return <FireInfo>[
+      FireInfo(name: "연탄", fireType: FireType.BRIQUETTE, imagePath: 'assets/briquette.png'),
+      FireInfo(name: "숯불", fireType: FireType.CHARCOAL, imagePath: 'assets/charcoal.png'),
+      FireInfo(name: "가스레인지", fireType: FireType.GAS_STOVE, imagePath: 'assets/gas_stove.png'),
+      FireInfo(name: "인덕션", fireType: FireType.INDUCTION, imagePath: 'assets/induction.png'),
+    ];
+  }
+
+  /// Griddle Screen
+  static List<GriddleInfo> getGriddleInfoList() {
+    return <GriddleInfo>[
+      GriddleInfo(name: "솥뚜껑", griddleType: GriddleType.CALDRON_LID, imagePath: 'assets/caldron_lid.png'),
+      GriddleInfo(name: "코팅 불판", griddleType: GriddleType.COATING_GRIDDLE, imagePath: 'assets/coating_griddle.png'),
+      GriddleInfo(name: "프라이팬", griddleType: GriddleType.FRYING_PAN, imagePath: 'assets/frying_pan.png'),
+      GriddleInfo(name: "그릴", griddleType: GriddleType.GRIDIRON, imagePath: 'assets/gridiron.png'),
+    ];
+  }
 }

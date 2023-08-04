@@ -8,6 +8,8 @@ class GrillSettingsArguments extends Arguments {
   MeatPartType? meatPartType;
   double? thickness;
   DonenessType? donenessType;
+  FireType? fireType;
+  GriddleType? griddleType;
 
   // 생성자
   GrillSettingsArguments(this.meatType);
@@ -47,6 +49,20 @@ enum DonenessType {
   WELLDONE,
 }
 
+enum FireType {
+  BRIQUETTE, // 연탄
+  CHARCOAL, // 숯
+  GAS_STOVE, // 가스레인지
+  INDUCTION, // 인덕션
+}
+
+enum GriddleType {
+  CALDRON_LID, // 솥뚜껑
+  COATING_GRIDDLE, // 코팅 불판
+  FRYING_PAN, // 프라이팬
+  GRIDIRON, // 그릴
+}
+
 class GrillSettingsInfo {
   final String name;
   final String imagePath;
@@ -71,5 +87,23 @@ class DonenessInfo extends GrillSettingsInfo {
   const DonenessInfo(
       { required name,
         required this.donenessType,
+        required imagePath}) : super(name: name, imagePath: imagePath);
+}
+
+class FireInfo extends GrillSettingsInfo {
+  final FireType fireType;
+
+  const FireInfo(
+      { required name,
+        required this.fireType,
+        required imagePath}) : super(name: name, imagePath: imagePath);
+}
+
+class GriddleInfo extends GrillSettingsInfo {
+  final GriddleType griddleType;
+
+  const GriddleInfo(
+      { required name,
+        required this.griddleType,
         required imagePath}) : super(name: name, imagePath: imagePath);
 }
