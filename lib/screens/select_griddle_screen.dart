@@ -5,7 +5,7 @@ import 'package:helpmeat/utils/resources.dart';
 import 'package:helpmeat/widgets/grill_settings_widget.dart';
 import 'package:helpmeat/widgets/ui_widget.dart';
 
-/// [6] 불판 선택 화면 : 솥뚜껑 / 코팅 불판 / 프라이팬 / 그릴
+/// [6] 불판 선택 화면 : 솥뚜껑 / 코팅 불판 / 프라이팬 / 석쇠
 class SelectGriddleScreen extends StatefulWidget {
   final GrillSettingsArguments args;
 
@@ -21,7 +21,7 @@ class _SelectGriddleScreenState extends State<SelectGriddleScreen> {
 
   void initResources() {
     if (griddleInfoList.isEmpty) {
-      griddleInfoList = ResourceUtils.getGriddleInfoList();
+      griddleInfoList = ResourceUtils.getGriddleInfoList(widget.args.fireType!);
     }
   }
 

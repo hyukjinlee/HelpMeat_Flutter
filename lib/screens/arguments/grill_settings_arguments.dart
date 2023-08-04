@@ -60,7 +60,7 @@ enum GriddleType {
   CALDRON_LID, // 솥뚜껑
   COATING_GRIDDLE, // 코팅 불판
   FRYING_PAN, // 프라이팬
-  GRIDIRON, // 그릴
+  GRIDIRON, // 석쇠
 }
 
 class GrillSettingsInfo {
