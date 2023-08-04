@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:helpmeat/screens/arguments/grill_settings_arguments.dart';
-import 'package:helpmeat/screens/select_doneness_screen.dart';
-import 'package:helpmeat/screens/select_fire_screen.dart';
-import 'package:helpmeat/screens/select_griddle_screen.dart';
-import 'package:helpmeat/screens/select_meat_screen.dart';
-import 'package:helpmeat/screens/select_part_screen.dart';
-import 'package:helpmeat/screens/select_thickness_screen.dart';
+import 'package:helpmeat/screens/grillSettings/select_doneness_screen.dart';
+import 'package:helpmeat/screens/grillSettings/select_fire_screen.dart';
+import 'package:helpmeat/screens/grillSettings/select_griddle_screen.dart';
+import 'package:helpmeat/screens/grillSettings/select_meat_screen.dart';
+import 'package:helpmeat/screens/grillSettings/select_part_screen.dart';
+import 'package:helpmeat/screens/grillSettings/select_thickness_screen.dart';
 
 
 class AppNavigator {
