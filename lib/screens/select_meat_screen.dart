@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:helpmeat/navigators/navigator.dart';
-import 'package:helpmeat/screens/arguments/grill_meat_arguments.dart';
+import 'package:helpmeat/screens/arguments/grill_settings_arguments.dart';
 import 'package:helpmeat/utils/resources.dart';
-import 'package:helpmeat/widgets/grill_meat_widget.dart';
+import 'package:helpmeat/widgets/grill_settings_widget.dart';
 import 'package:helpmeat/widgets/ui_widget.dart';
 
 /// [1] 고기 굽기 화면 : 돼지고기 / 소고기 선택
@@ -14,7 +14,7 @@ class SelectMeatScreen extends StatelessWidget {
     // 추출한 아규먼트로 Scaffold를 구성하여 반환
     return Scaffold(
         // appBar: AppBar(),
-        body: GrillMeatLayout(
+        body: GrillSettingsLayout(
       top: VerticalTextImageUI(
         textList: getIndicateTextList(),
         imagePath: getIndicateImagePath(),
@@ -58,7 +58,7 @@ class TextImageButton extends StatelessWidget {
     return InkWell(
       onTap: () {
         AppNavigator.push(
-            context, Screens.SELECT_PART_SCREEN, GrillMeatArguments(meatType));
+            context, Screens.SELECT_PART_SCREEN, GrillSettingsArguments(meatType));
       },
       borderRadius: BorderRadius.all(AppThemes.radius),
       child: Padding(

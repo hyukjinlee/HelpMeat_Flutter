@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:helpmeat/screens/arguments/grill_meat_arguments.dart';
+import 'package:helpmeat/screens/arguments/grill_settings_arguments.dart';
 
 /// App Theme 관련 상수
 class AppThemes {

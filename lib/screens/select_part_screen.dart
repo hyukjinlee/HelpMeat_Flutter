@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:helpmeat/navigators/navigator.dart';
-import 'package:helpmeat/screens/arguments/grill_meat_arguments.dart';
+import 'package:helpmeat/screens/arguments/grill_settings_arguments.dart';
 import 'package:helpmeat/utils/resources.dart';
-import 'package:helpmeat/widgets/grill_meat_widget.dart';
+import 'package:helpmeat/widgets/grill_settings_widget.dart';
 import 'package:helpmeat/widgets/ui_widget.dart';
 
 /// [2] 부위 선택 화면 : 등심/살치/안심 등..
 class SelectPartScreen extends StatefulWidget {
-  final GrillMeatArguments args;
+  final GrillSettingsArguments args;
 
   SelectPartScreen({Key? key, required this.args}) : super(key: key);
 
@@ -31,7 +31,7 @@ class _SelectPartScreenState extends State<SelectPartScreen> {
 
     return Scaffold(
         // appBar: AppBar(),
-        body: GrillMeatLayout(
+        body: GrillSettingsLayout(
       top: Center(
         child: Image(
           image: AssetImage(meatInfoList[selectedItem].imagePath),

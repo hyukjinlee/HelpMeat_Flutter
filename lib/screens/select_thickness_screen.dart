@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:helpmeat/navigators/navigator.dart';
-import 'package:helpmeat/screens/arguments/grill_meat_arguments.dart';
+import 'package:helpmeat/screens/arguments/grill_settings_arguments.dart';
 import 'package:helpmeat/utils/resources.dart';
 import 'package:helpmeat/utils/util.dart';
-import 'package:helpmeat/widgets/grill_meat_widget.dart';
+import 'package:helpmeat/widgets/grill_settings_widget.dart';
 import 'package:helpmeat/widgets/ui_widget.dart';
 
 /// [3] 두께 선택 화면 : 0.1 ~ 5.0 cm
 class SelectThicknessScreen extends StatefulWidget {
-  final GrillMeatArguments args;
+  final GrillSettingsArguments args;
 
   SelectThicknessScreen({Key? key, required this.args}) : super(key: key);
 
@@ -39,7 +39,7 @@ class _SelectThicknessScreenState extends State<SelectThicknessScreen> {
 
     return Scaffold(
         // appBar: AppBar(),
-        body: GrillMeatLayout(
+        body: GrillSettingsLayout(
       top: IndicateText(thickness: _thickness,),
       middle: Row(
         key: _contentsBoxKey,

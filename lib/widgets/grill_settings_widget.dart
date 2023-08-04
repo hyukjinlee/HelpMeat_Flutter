@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:helpmeat/utils/resources.dart';
 
-class GrillMeatLayout extends StatelessWidget {
+class GrillSettingsLayout extends StatelessWidget {
   final Widget top;
   final Widget middle;
   final Widget bottom;
 
-  const GrillMeatLayout(
+  const GrillSettingsLayout(
       {Key? key,
       required this.top,
       required this.middle,

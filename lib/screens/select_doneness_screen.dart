@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:helpmeat/navigators/navigator.dart';
-import 'package:helpmeat/screens/arguments/grill_meat_arguments.dart';
+import 'package:helpmeat/screens/arguments/grill_settings_arguments.dart';
 import 'package:helpmeat/utils/resources.dart';
-import 'package:helpmeat/widgets/grill_meat_widget.dart';
+import 'package:helpmeat/widgets/grill_settings_widget.dart';
 import 'package:helpmeat/widgets/ui_widget.dart';
 
 /// [4] 굽기 정도 선택 화면 : RARE / MEDIUM / WELL DONE 등..
 class SelectDonenessScreen extends StatefulWidget {
-  final GrillMeatArguments args;
+  final GrillSettingsArguments args;
 
   SelectDonenessScreen({Key? key, required this.args}) : super(key: key);
 
@@ -32,7 +32,7 @@ class _SelectDonenessScreenState extends State<SelectDonenessScreen> {
 
     return Scaffold(
         // appBar: AppBar(),
-        body: GrillMeatLayout(
+        body: GrillSettingsLayout(
       top: VerticalTextImageUI(
         textList: getIndicateTextList(),
         imagePath: getIndicateImagePath(),

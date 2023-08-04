@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:helpmeat/screens/arguments/grill_meat_arguments.dart';
+import 'package:helpmeat/screens/arguments/grill_settings_arguments.dart';
 import 'package:helpmeat/utils/resources.dart';
 
 class NextButton extends StatelessWidget {
@@ -58,7 +58,7 @@ class VerticalTextImageUI extends StatelessWidget {
 }
 
 class GrillSettingsListView extends StatelessWidget {
-  final List<GrillMeatInfo> elementList;
+  final List<GrillSettingsInfo> elementList;
   final void Function(int) onSelectedItemChanged;
   final int selectedItem;
 

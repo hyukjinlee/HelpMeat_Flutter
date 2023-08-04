@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:helpmeat/screens/arguments/grill_meat_arguments.dart';
+import 'package:helpmeat/screens/arguments/grill_settings_arguments.dart';
 import 'package:helpmeat/screens/select_doneness_screen.dart';
 import 'package:helpmeat/screens/select_meat_screen.dart';
 import 'package:helpmeat/screens/select_part_screen.dart';
@@ -15,13 +15,13 @@ class AppNavigator {
         builder = (context) => SelectMeatScreen();
         break;
       case Screens.SELECT_PART_SCREEN:
-        builder = (context) => SelectPartScreen(args: arguments as GrillMeatArguments);
+        builder = (context) => SelectPartScreen(args: arguments as GrillSettingsArguments);
         break;
       case Screens.SELECT_THICKNESS_SCREEN:
-        builder = (context) => SelectThicknessScreen(args: arguments as GrillMeatArguments);
+        builder = (context) => SelectThicknessScreen(args: arguments as GrillSettingsArguments);
         break;
       case Screens.SELECT_DONENESS_SCREEN:
-        builder = (context) => SelectDonenessScreen(args: arguments as GrillMeatArguments);
+        builder = (context) => SelectDonenessScreen(args: arguments as GrillSettingsArguments);
         break;
       default:
         return;
