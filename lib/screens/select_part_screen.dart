@@ -40,6 +40,7 @@ class _SelectPartScreenState extends State<SelectPartScreen> {
         ),
       ),
       middle: GrillSettingsListView(
+          isKorean: true,
           elementList: meatInfoList,
           selectedItem: selectedItem,
           onSelectedItemChanged: (index) {

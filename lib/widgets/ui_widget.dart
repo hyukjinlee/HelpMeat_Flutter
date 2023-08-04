@@ -61,8 +61,9 @@ class GrillSettingsListView extends StatelessWidget {
   final List<GrillSettingsInfo> elementList;
   final void Function(int) onSelectedItemChanged;
   final int selectedItem;
+  final bool isKorean;
 
-  const GrillSettingsListView({Key? key, required this.elementList, required this.selectedItem, required this.onSelectedItemChanged}) : super(key: key);
+  const GrillSettingsListView({Key? key, required this.isKorean, required this.elementList, required this.selectedItem, required this.onSelectedItemChanged}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +74,7 @@ class GrillSettingsListView extends StatelessWidget {
       childDelegate: ListWheelChildBuilderDelegate(
         childCount: elementList.length,
         builder: (context, index) {
-          return ListViewItem(isSelected: index == selectedItem, isKorean: false, text: elementList[index].name,);
+          return ListViewItem(isSelected: index == selectedItem, isKorean: isKorean, text: elementList[index].name,);
         },
       ),
       onSelectedItemChanged: onSelectedItemChanged,
