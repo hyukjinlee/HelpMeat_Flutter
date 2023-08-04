@@ -49,7 +49,7 @@ class _SelectGriddleScreenState extends State<SelectGriddleScreen> {
       bottom: NextButton(
         onPressed: () {
           widget.args.griddleInfo = griddleInfoList[selectedItem];
-          AppNavigator.push(context, Screens.SELECT_MEAT_SCREEN, widget.args);
+          AppNavigator.push(context, Screens.FINISH_SETTINGS_SCREEN, widget.args);
         },
       ),
     ));

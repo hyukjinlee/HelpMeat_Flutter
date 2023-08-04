@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:helpmeat/screens/arguments/grill_settings_arguments.dart';
+import 'package:helpmeat/screens/grillSettings/finish_settings_screen.dart';
 import 'package:helpmeat/screens/grillSettings/select_doneness_screen.dart';
 import 'package:helpmeat/screens/grillSettings/select_fire_screen.dart';
 import 'package:helpmeat/screens/grillSettings/select_griddle_screen.dart';
@@ -30,6 +31,9 @@ class AppNavigator {
         break;
       case Screens.SELECT_GRIDDLE_SCREEN:
         builder = (context) => SelectGriddleScreen(args: arguments as GrillSettingsArguments);
+        break;
+      case Screens.FINISH_SETTINGS_SCREEN:
+        builder = (context) => FinishSettingsScreen(args: arguments as GrillSettingsArguments);
         break;
       default:
         return;
@@ -62,4 +66,5 @@ enum Screens {
   SELECT_DONENESS_SCREEN,
   SELECT_FIRE_SCREEN,
   SELECT_GRIDDLE_SCREEN,
+  FINISH_SETTINGS_SCREEN,
 }
