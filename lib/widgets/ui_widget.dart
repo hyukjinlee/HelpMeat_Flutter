@@ -24,28 +24,28 @@ class NextButton extends StatelessWidget {
 }
 
 class VerticalTextImageUI extends StatelessWidget {
-  final List<String> textList;
+  final String text;
   final String imagePath;
 
-  const VerticalTextImageUI({Key? key, required this.textList, required this.imagePath}) : super(key: key);
+  const VerticalTextImageUI({Key? key, required this.text, required this.imagePath}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> textWidgetList = [];
-    for (var element in textList) {
-      textWidgetList.add(Text(
-        style: TextStyle(fontSize: 25),
-        element,
-      ));
-    }
-
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: textWidgetList,
+        Text.rich(
+          TextSpan(
+              style: DefaultTextStyle.of(context).style,
+              children: [
+                TextSpan(
+                  text: text,
+                  style: TextStyle(fontSize: 25),
+                ),
+              ]
+          ),
+          textAlign: TextAlign.center,
         ),
         Image(
           image: AssetImage(imagePath),
