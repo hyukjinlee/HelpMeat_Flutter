@@ -5,11 +5,11 @@ class Arguments {
 
 class GrillSettingsArguments extends Arguments {
   MeatType meatType;
-  MeatPartType? meatPartType;
+  MeatInfo? meatInfo;
   double? thickness;
-  DonenessType? donenessType;
-  FireType? fireType;
-  GriddleType? griddleType;
+  DonenessInfo? donenessInfo;
+  FireInfo? fireInfo;
+  GriddleInfo? griddleInfo;
 
   // 생성자
   GrillSettingsArguments(this.meatType);

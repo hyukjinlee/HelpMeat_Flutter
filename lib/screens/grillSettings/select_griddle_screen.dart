@@ -21,7 +21,7 @@ class _SelectGriddleScreenState extends State<SelectGriddleScreen> {
 
   void initResources() {
     if (griddleInfoList.isEmpty) {
-      griddleInfoList = ResourceUtils.getGriddleInfoList(widget.args.fireType!);
+      griddleInfoList = ResourceUtils.getGriddleInfoList(widget.args.fireInfo!.fireType);
     }
   }
 
@@ -48,7 +48,7 @@ class _SelectGriddleScreenState extends State<SelectGriddleScreen> {
       ),
       bottom: NextButton(
         onPressed: () {
-          widget.args.griddleType = griddleInfoList[selectedItem].griddleType;
+          widget.args.griddleInfo = griddleInfoList[selectedItem];
           AppNavigator.push(context, Screens.SELECT_MEAT_SCREEN, widget.args);
         },
       ),

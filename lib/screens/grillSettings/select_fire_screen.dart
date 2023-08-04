@@ -48,7 +48,7 @@ class _SelectFireScreenState extends State<SelectFireScreen> {
       ),
       bottom: NextButton(
         onPressed: () {
-          widget.args.fireType = fireInfoList[selectedItem].fireType;
+          widget.args.fireInfo = fireInfoList[selectedItem];
           AppNavigator.push(context, Screens.SELECT_GRIDDLE_SCREEN, widget.args);
         },
       ),
