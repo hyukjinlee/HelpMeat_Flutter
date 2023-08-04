@@ -46,7 +46,7 @@ class _SelectPartScreenState extends State<SelectPartScreen> {
         childDelegate: ListWheelChildBuilderDelegate(
           childCount: meatInfoList.length,
           builder: (context, index) {
-            return ListViewItem(isSelected: index == selectedItem, text: meatInfoList[index].name,);
+            return ListViewItem(isSelected: index == selectedItem, isKorean: true, text: meatInfoList[index].name,);
           },
         ),
         onSelectedItemChanged: (index) {

@@ -59,12 +59,20 @@ class VerticalTextImageUI extends StatelessWidget {
 class ListViewItem extends StatelessWidget {
   final bool isSelected;
   final String text;
-  const ListViewItem({Key? key, required this.isSelected, required this.text}) : super(key: key);
+  final bool isKorean;
+
+  const ListViewItem({Key? key, required this.isSelected, required this.isKorean, required this.text}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     Widget item;
     Color textColor;
+    double textSize;
+    if (isKorean) {
+      textSize = 40;
+    } else {
+      textSize = 30;
+    }
 
     if (isSelected) {
       textColor = AppThemes.mainPink;
@@ -73,7 +81,7 @@ class ListViewItem extends StatelessWidget {
     }
     item = Center(
       child: Text(text,
-          style: TextStyle(color: textColor, fontSize: 40),
+          style: TextStyle(color: textColor, fontSize: textSize),
           textAlign: TextAlign.center),
     );
 

@@ -114,7 +114,7 @@ class ResourceUtils {
     switch (meatType) {
       case MeatType.MEAT_TYPE_BEEF:
         return <DonenessInfo>[
-          DonenessInfo(name: "RARE", donenessType: DonenessType.RARE, imagePath: 'assets/beef_rare.png'),
+          DonenessInfo(name: "RARE", donenessType: DonenessType.RARE, imagePath: 'assets/beef.png'),
           DonenessInfo(name: "MEDIUM RARE", donenessType: DonenessType.MEDIUM_RARE, imagePath: 'assets/beef_medium_rare.png'),
           DonenessInfo(name: "MEDIUM", donenessType: DonenessType.MEDIUM, imagePath: 'assets/beef_medium.png'),
           DonenessInfo(name: "WELL DONE", donenessType: DonenessType.WELLDONE, imagePath: 'assets/beef_well_done.png'),
@@ -122,7 +122,7 @@ class ResourceUtils {
 
       case MeatType.MEAT_TYPE_FORK:
         return <DonenessInfo>[
-          DonenessInfo(name: "RARE", donenessType: DonenessType.RARE, imagePath: 'assets/fork_rare.png'),
+          DonenessInfo(name: "RARE", donenessType: DonenessType.RARE, imagePath: 'assets/fork.png'),
           DonenessInfo(name: "MEDIUM", donenessType: DonenessType.MEDIUM, imagePath: 'assets/fork_medium.png'),
           DonenessInfo(name: "WELL DONE", donenessType: DonenessType.WELLDONE, imagePath: 'assets/fork_well_done.png'),
         ];

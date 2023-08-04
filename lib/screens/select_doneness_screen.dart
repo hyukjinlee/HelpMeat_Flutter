@@ -44,7 +44,7 @@ class _SelectDonenessScreenState extends State<SelectDonenessScreen> {
         childDelegate: ListWheelChildBuilderDelegate(
           childCount: donenessInfoList.length,
           builder: (context, index) {
-            return ListViewItem(isSelected: index == selectedItem, text: donenessInfoList[index].name,);
+            return ListViewItem(isSelected: index == selectedItem, isKorean: false, text: donenessInfoList[index].name,);
           },
         ),
         onSelectedItemChanged: (index) {
