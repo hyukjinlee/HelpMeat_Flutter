@@ -37,16 +37,9 @@ class _SelectDonenessScreenState extends State<SelectDonenessScreen> {
         textList: getIndicateTextList(),
         imagePath: getIndicateImagePath(),
       ),
-      middle: ListWheelScrollView.useDelegate(
-        itemExtent: 60,
-        diameterRatio: 2,
-        squeeze: 0.7,
-        childDelegate: ListWheelChildBuilderDelegate(
-          childCount: donenessInfoList.length,
-          builder: (context, index) {
-            return ListViewItem(isSelected: index == selectedItem, isKorean: false, text: donenessInfoList[index].name,);
-          },
-        ),
+      middle: GrillSettingsListView(
+        elementList: donenessInfoList,
+        selectedItem: selectedItem,
         onSelectedItemChanged: (index) {
           setState(() {
             selectedItem = index;

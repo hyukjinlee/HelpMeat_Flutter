@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:helpmeat/screens/arguments/grill_meat_arguments.dart';
 import 'package:helpmeat/utils/resources.dart';
 
 class NextButton extends StatelessWidget {
@@ -55,6 +56,31 @@ class VerticalTextImageUI extends StatelessWidget {
     );
   }
 }
+
+class GrillSettingsListView extends StatelessWidget {
+  final List<GrillMeatInfo> elementList;
+  final void Function(int) onSelectedItemChanged;
+  final int selectedItem;
+
+  const GrillSettingsListView({Key? key, required this.elementList, required this.selectedItem, required this.onSelectedItemChanged}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListWheelScrollView.useDelegate(
+      itemExtent: 60,
+      diameterRatio: 2,
+      squeeze: 0.7,
+      childDelegate: ListWheelChildBuilderDelegate(
+        childCount: elementList.length,
+        builder: (context, index) {
+          return ListViewItem(isSelected: index == selectedItem, isKorean: false, text: elementList[index].name,);
+        },
+      ),
+      onSelectedItemChanged: onSelectedItemChanged,
+    );
+  }
+}
+
 
 class ListViewItem extends StatelessWidget {
   final bool isSelected;

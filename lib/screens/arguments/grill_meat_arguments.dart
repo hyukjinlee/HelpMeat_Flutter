@@ -40,17 +40,6 @@ enum MeatPartType {
   FORK_PART_TYPE_SAMGYEUP,
 }
 
-class MeatInfo {
-  final String name;
-  final MeatPartType meatPartType;
-  final String imagePath;
-
-  const MeatInfo(
-      { required this.name,
-        required this.meatPartType,
-        required this.imagePath});
-}
-
 enum DonenessType {
   RARE,
   MEDIUM_RARE,
@@ -58,13 +47,29 @@ enum DonenessType {
   WELLDONE,
 }
 
-class DonenessInfo {
+class GrillMeatInfo {
   final String name;
-  final DonenessType donenessType;
   final String imagePath;
 
-  const DonenessInfo(
+  const GrillMeatInfo(
       { required this.name,
-        required this.donenessType,
         required this.imagePath});
+}
+
+class MeatInfo extends GrillMeatInfo {
+  final MeatPartType meatPartType;
+
+  const MeatInfo(
+      { required name,
+        required this.meatPartType,
+        required imagePath}) : super(name: name, imagePath: imagePath);
+}
+
+class DonenessInfo extends GrillMeatInfo {
+  final DonenessType donenessType;
+
+  const DonenessInfo(
+      { required name,
+        required this.donenessType,
+        required imagePath}) : super(name: name, imagePath: imagePath);
 }

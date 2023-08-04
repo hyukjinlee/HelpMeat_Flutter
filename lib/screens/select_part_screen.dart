@@ -39,21 +39,14 @@ class _SelectPartScreenState extends State<SelectPartScreen> {
           height: 300,
         ),
       ),
-      middle: ListWheelScrollView.useDelegate(
-        itemExtent: 60,
-        diameterRatio: 2,
-        squeeze: 0.7,
-        childDelegate: ListWheelChildBuilderDelegate(
-          childCount: meatInfoList.length,
-          builder: (context, index) {
-            return ListViewItem(isSelected: index == selectedItem, isKorean: true, text: meatInfoList[index].name,);
+      middle: GrillSettingsListView(
+          elementList: meatInfoList,
+          selectedItem: selectedItem,
+          onSelectedItemChanged: (index) {
+            setState(() {
+              selectedItem = index;
+            });
           },
-        ),
-        onSelectedItemChanged: (index) {
-          setState(() {
-            selectedItem = index;
-          });
-        },
       ),
       bottom: NextButton(
         onPressed: () {
