@@ -16,7 +16,7 @@ class SelectMeatScreen extends StatelessWidget {
         // appBar: AppBar(),
         body: GrillSettingsLayout(
       top: VerticalTextImageUI(
-        textList: getIndicateTextList(),
+        text: getIndicateText(),
         imagePath: getIndicateImagePath(),
       ),
       middle: Column(
@@ -36,11 +36,8 @@ class SelectMeatScreen extends StatelessWidget {
     ));
   }
 
-  List<String> getIndicateTextList() {
-    return [
-      '먼저, 고기를',
-      '선택해주세요'
-    ];
+  String getIndicateText() {
+    return '먼저, 고기를\n선택해주세요';
   }
 
   String getIndicateImagePath() {

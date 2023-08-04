@@ -33,7 +33,7 @@ class _SelectFireScreenState extends State<SelectFireScreen> {
         // appBar: AppBar(),
         body: GrillSettingsLayout(
       top: VerticalTextImageUI(
-        textList: getIndicateTextList(),
+        text: getIndicateText(),
         imagePath: getIndicateImagePath(),
       ),
       middle: GrillSettingsListView(
@@ -55,10 +55,8 @@ class _SelectFireScreenState extends State<SelectFireScreen> {
     ));
   }
 
-  List<String> getIndicateTextList() {
-    return [
-      '어디에서 구울 건가요?',
-    ];
+  String getIndicateText() {
+    return '어디에서 구울 건가요?';
   }
 
   String getIndicateImagePath() {

@@ -33,7 +33,7 @@ class _SelectGriddleScreenState extends State<SelectGriddleScreen> {
         // appBar: AppBar(),
         body: GrillSettingsLayout(
       top: VerticalTextImageUI(
-        textList: getIndicateTextList(),
+        text: getIndicateText(),
         imagePath: getIndicateImagePath(),
       ),
       middle: GrillSettingsListView(
@@ -55,10 +55,8 @@ class _SelectGriddleScreenState extends State<SelectGriddleScreen> {
     ));
   }
 
-  List<String> getIndicateTextList() {
-    return [
-      '무엇으로 구울 건가요?',
-    ];
+  String getIndicateText() {
+    return '무엇으로 구울 건가요?';
   }
 
   String getIndicateImagePath() {

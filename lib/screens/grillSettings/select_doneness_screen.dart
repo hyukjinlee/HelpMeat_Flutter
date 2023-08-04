@@ -34,7 +34,7 @@ class _SelectDonenessScreenState extends State<SelectDonenessScreen> {
         // appBar: AppBar(),
         body: GrillSettingsLayout(
       top: VerticalTextImageUI(
-        textList: getIndicateTextList(),
+        text: getIndicateText(),
         imagePath: getIndicateImagePath(),
       ),
       middle: GrillSettingsListView(
@@ -56,11 +56,8 @@ class _SelectDonenessScreenState extends State<SelectDonenessScreen> {
     ));
   }
 
-  List<String> getIndicateTextList() {
-    return [
-      '원하는 굽기 정도를',
-      '골라주세요'
-    ];
+  String getIndicateText() {
+    return '원하는 굽기 정도를\n골라주세요';
   }
 
   String getIndicateImagePath() {
