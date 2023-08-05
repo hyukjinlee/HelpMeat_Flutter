@@ -39,27 +39,27 @@ class ResourceUtils {
     switch (meatType) {
       case MeatType.MEAT_TYPE_BEEF:
         return <MeatInfo>[
-          MeatInfo(name: "갈비", meatPartType: MeatPartType.BEEF_PART_TYPE_GALBI, imagePath: 'assets/beef_galbi.png'),
-          MeatInfo(name: "등심", meatPartType: MeatPartType.BEEF_PART_TYPE_DEUNGSIM, imagePath: 'assets/beef_deungsim.png'),
-          MeatInfo(name: "부채", meatPartType: MeatPartType.BEEF_PART_TYPE_BUCHAE, imagePath: 'assets/beef_buchae.png'),
-          MeatInfo(name: "살치", meatPartType: MeatPartType.BEEF_PART_TYPE_SALCHI, imagePath: 'assets/beef_salchi.png'),
+          MeatInfo(name: "갈비살", meatPartType: MeatPartType.BEEF_PART_TYPE_GALBI, imagePath: 'assets/beef_galbi.png'),
+          MeatInfo(name: "등심살", meatPartType: MeatPartType.BEEF_PART_TYPE_DEUNGSIM, imagePath: 'assets/beef_deungsim.png'),
+          MeatInfo(name: "부채살", meatPartType: MeatPartType.BEEF_PART_TYPE_BUCHAE, imagePath: 'assets/beef_buchae.png'),
+          MeatInfo(name: "살치살", meatPartType: MeatPartType.BEEF_PART_TYPE_SALCHI, imagePath: 'assets/beef_salchi.png'),
           MeatInfo(name: "안심", meatPartType: MeatPartType.BEEF_PART_TYPE_ANSIM, imagePath: 'assets/beef_ansim.png'),
-          MeatInfo(name: "안창", meatPartType: MeatPartType.BEEF_PART_TYPE_ANCHANG, imagePath: 'assets/beef_anchang.png'),
+          MeatInfo(name: "안창살", meatPartType: MeatPartType.BEEF_PART_TYPE_ANCHANG, imagePath: 'assets/beef_anchang.png'),
           MeatInfo(name: "제비추리", meatPartType: MeatPartType.BEEF_PART_TYPE_JEBICHURI, imagePath: 'assets/beef_jebichuri.png'),
-          MeatInfo(name: "채끝", meatPartType: MeatPartType.BEEF_PART_TYPE_CHAEKKEUT, imagePath: 'assets/beef_chaekkeut.png'),
-          MeatInfo(name: "토시", meatPartType: MeatPartType.BEEF_PART_TYPE_TOSI, imagePath: 'assets/beef_tosi.png'),];
+          MeatInfo(name: "채끝살", meatPartType: MeatPartType.BEEF_PART_TYPE_CHAEKKEUT, imagePath: 'assets/beef_chaekkeut.png'),
+          MeatInfo(name: "토시살", meatPartType: MeatPartType.BEEF_PART_TYPE_TOSI, imagePath: 'assets/beef_tosi.png'),];
 
       case MeatType.MEAT_TYPE_FORK:
         return <MeatInfo>[
-          MeatInfo(name: "갈비", meatPartType: MeatPartType.FORK_PART_TYPE_GALBI, imagePath: 'assets/fork_galbi.png'),
-          MeatInfo(name: "갈매기", meatPartType: MeatPartType.FORK_PART_TYPE_GALMAEGI, imagePath: 'assets/fork_galmaegi.png'),
-          MeatInfo(name: "뒷다리", meatPartType: MeatPartType.FORK_PART_TYPE_DUITDARI, imagePath: 'assets/fork_duitdari.png'),
+          MeatInfo(name: "갈비살", meatPartType: MeatPartType.FORK_PART_TYPE_GALBI, imagePath: 'assets/fork_galbi.png'),
+          MeatInfo(name: "갈매기살", meatPartType: MeatPartType.FORK_PART_TYPE_GALMAEGI, imagePath: 'assets/fork_galmaegi.png'),
+          MeatInfo(name: "뒷다리살", meatPartType: MeatPartType.FORK_PART_TYPE_DUITDARI, imagePath: 'assets/fork_duitdari.png'),
           MeatInfo(name: "등심", meatPartType: MeatPartType.FORK_PART_TYPE_DEUNGSIM, imagePath: 'assets/fork_deungsim.png'),
           MeatInfo(name: "목살", meatPartType: MeatPartType.FORK_PART_TYPE_MOKSAL, imagePath: 'assets/fork_moksal.png'),
           MeatInfo(name: "안심", meatPartType: MeatPartType.FORK_PART_TYPE_ANSIM, imagePath: 'assets/fork_ansim.png'),
-          MeatInfo(name: "앞다리", meatPartType: MeatPartType.FORK_PART_TYPE_ABDARI, imagePath: 'assets/fork_abdari.png'),
-          MeatInfo(name: "삼겹", meatPartType: MeatPartType.FORK_PART_TYPE_SAMGYEUP, imagePath: 'assets/fork_samgyeup.png'),
-          MeatInfo(name: "항정", meatPartType: MeatPartType.FORK_PART_TYPE_HANGJEONG, imagePath: 'assets/fork_hangjeong.png'),];
+          MeatInfo(name: "앞다리살", meatPartType: MeatPartType.FORK_PART_TYPE_ABDARI, imagePath: 'assets/fork_abdari.png'),
+          MeatInfo(name: "삼겹살", meatPartType: MeatPartType.FORK_PART_TYPE_SAMGYEUP, imagePath: 'assets/fork_samgyeup.png'),
+          MeatInfo(name: "항정살", meatPartType: MeatPartType.FORK_PART_TYPE_HANGJEONG, imagePath: 'assets/fork_hangjeong.png'),];
       default:
         throw Exception();
     }
