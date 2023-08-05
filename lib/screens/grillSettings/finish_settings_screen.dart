@@ -3,13 +3,44 @@ import 'package:helpmeat/screens/arguments/grill_settings_arguments.dart';
 import 'package:helpmeat/utils/resources.dart';
 
 /// [7] 최종 완료 및 확인 화면
-class FinishSettingsScreen extends StatelessWidget {
+class FinishSettingsScreen extends StatefulWidget {
   final GrillSettingsArguments args;
 
   FinishSettingsScreen({Key? key, required this.args}) : super(key: key);
 
   @override
+  State<FinishSettingsScreen> createState() => _FinishSettingsScreenState();
+}
+
+class _FinishSettingsScreenState extends State<FinishSettingsScreen>
+    with SingleTickerProviderStateMixin {
+  double _scale = 0;
+  late AnimationController _controller;
+
+  @override
+  void initState() {
+    _controller = AnimationController(
+      vsync: this,
+      duration: Duration(
+        milliseconds: 50,
+      ),
+      lowerBound: 0.0,
+      upperBound: 0.1,
+    )..addListener(() {
+        setState(() {});
+      });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    _scale = 1 - _controller.value;
     return Scaffold(
       body: Container(
         width: double.infinity,
@@ -19,18 +50,27 @@ class FinishSettingsScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            IndicateText(args: args,),
+            IndicateText(args: widget.args,),
             Image(
               image: AssetImage(getIndicateImagePath()),
               width: 150,
               height: 150,
             ),
-            IconButton(
-              icon: Image(image: AssetImage(getNextButtonImagePath()),),
-              iconSize: 150,
-              onPressed: () => {
-                // TODO
+            GestureDetector(
+              onTapDown: (details) => _controller.forward(),
+              onTapUp: (details) => {
+                _controller.reverse()
+
+                // TODO : navigate code
               },
+              child: Transform.scale(
+                scale: _scale,
+                child: Image(
+                  image: AssetImage(getNextButtonImagePath()),
+                  width: 150,
+                  height: 150,
+                ),
+              ),
             )
           ],
         ),
