@@ -15,10 +15,6 @@ class _ProceedGrillingPageState extends State<ProceedGrillingPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        child: Container(),
-      ),
-    );
+    return Container();
   }
 }

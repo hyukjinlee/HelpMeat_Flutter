@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:helpmeat/screens/arguments/grill_settings_arguments.dart';
 import 'package:helpmeat/utils/resources.dart';
 
-/// 굽기 진행 페이지
+/// 굽기 진행 완료 화면
 class FinishGrillingPage extends StatefulWidget {
   final GrillSettingsArguments args;
 
