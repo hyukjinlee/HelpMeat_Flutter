@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:helpmeat/navigators/navigator.dart';
 import 'package:helpmeat/screens/arguments/grill_settings_arguments.dart';
 import 'package:helpmeat/utils/resources.dart';
 
@@ -59,9 +60,8 @@ class _FinishSettingsScreenState extends State<FinishSettingsScreen>
             GestureDetector(
               onTapDown: (details) => _controller.forward(),
               onTapUp: (details) => {
-                _controller.reverse()
-
-                // TODO : navigate code
+                _controller.reverse(),
+                AppNavigator.push(context, Screens.PROCEED_GRILLING_SCREEN, widget.args)
               },
               child: Transform.scale(
                 scale: _scale,
