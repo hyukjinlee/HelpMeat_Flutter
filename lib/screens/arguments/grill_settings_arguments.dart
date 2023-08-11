@@ -46,6 +46,7 @@ enum DonenessType {
   RARE,
   MEDIUM_RARE,
   MEDIUM,
+  MEDIUM_WELLDONE,
   WELLDONE,
 }
 
@@ -54,6 +55,7 @@ enum FireType {
   CHARCOAL, // 숯
   GAS_STOVE, // 가스레인지
   INDUCTION, // 인덕션
+  ELECTRIC_GRILL, // 전기 그릴
 }
 
 enum GriddleType {

@@ -117,7 +117,8 @@ class ResourceUtils {
           DonenessInfo(name: "RARE", donenessType: DonenessType.RARE, imagePath: 'assets/beef.png'),
           DonenessInfo(name: "MEDIUM RARE", donenessType: DonenessType.MEDIUM_RARE, imagePath: 'assets/beef_medium_rare.png'),
           DonenessInfo(name: "MEDIUM", donenessType: DonenessType.MEDIUM, imagePath: 'assets/beef_medium.png'),
-          DonenessInfo(name: "WELL DONE", donenessType: DonenessType.WELLDONE, imagePath: 'assets/beef_well_done.png'),
+          DonenessInfo(name: "MEDIUM WELLDONE", donenessType: DonenessType.MEDIUM, imagePath: 'assets/beef_medium.png'),
+          DonenessInfo(name: "WELLDONE", donenessType: DonenessType.WELLDONE, imagePath: 'assets/beef_well_done.png'),
         ];
 
       case MeatType.MEAT_TYPE_FORK:
@@ -138,6 +139,7 @@ class ResourceUtils {
       FireInfo(name: "숯불", fireType: FireType.CHARCOAL, imagePath: 'assets/charcoal.png'),
       FireInfo(name: "버너", fireType: FireType.GAS_STOVE, imagePath: 'assets/gas_stove.png'),
       FireInfo(name: "인덕션", fireType: FireType.INDUCTION, imagePath: 'assets/induction.png'),
+      FireInfo(name: "전기 그릴", fireType: FireType.INDUCTION, imagePath: 'assets/induction.png'),
     ];
   }
 
@@ -160,6 +162,10 @@ class ResourceUtils {
       case FireType.INDUCTION:
         return <GriddleInfo>[
           GriddleInfo(name: "프라이팬", griddleType: GriddleType.FRYING_PAN, imagePath: 'assets/frying_pan.png'),
+        ];
+      case FireType.ELECTRIC_GRILL:
+        return <GriddleInfo>[
+          GriddleInfo(name: "전기그릴", griddleType: GriddleType.FRYING_PAN, imagePath: 'assets/coating_griddle.png'),
         ];
     }
   }
