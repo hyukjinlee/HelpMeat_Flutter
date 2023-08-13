@@ -63,6 +63,7 @@ enum GriddleType {
   COATING_GRIDDLE, // 코팅 불판
   FRYING_PAN, // 프라이팬
   GRIDIRON, // 석쇠
+  ELECTRIC_GRILL, // 전기 그릴
 }
 
 class GrillSettingsInfo {
