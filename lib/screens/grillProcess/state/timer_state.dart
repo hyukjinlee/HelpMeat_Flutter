@@ -1,6 +1,27 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:helpmeat/screens/grillProcess/state/screen_info.dart';
+
+class TimerState extends ScreenInfo {
+  const TimerState({required BuildContext context, required void Function() onFinished})
+      : super(context: context, onFinished: onFinished);
+
+  @override
+  Widget getTopWidget() {
+    return Text('TOP');
+  }
+
+  @override
+  Widget getMiddleWidget() {
+    return Text('MIDDLE');
+  }
+
+  @override
+  Widget getBottomWidget() {
+    return Text('BOTTOM');
+  }
+}
 
 class TimerWidget extends StatefulWidget {
   const TimerWidget({Key? key}) : super(key: key);

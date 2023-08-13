@@ -112,7 +112,7 @@ class _SelectThicknessScreenState extends State<SelectThicknessScreen> {
           ),
         ],
       ),
-      bottom: NextButton(
+      bottom: AppTextButton(
         onPressed: () {
           if (_thickness >= 0.1) {
             widget.args.thickness = _thickness;

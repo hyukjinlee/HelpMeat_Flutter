@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:helpmeat/screens/grillProcess/state_machine.dart';
 
 /// Resource Utils
 class Utils {
@@ -34,5 +35,12 @@ class Utils {
     final height = childRenderBox.size.height;
 
     return Rect.fromLTRB(localPosition.dx, localPosition.dy, localPosition.dx + width, localPosition.dy + height);
+  }
+
+  static GrillType getGrillType(double thickness) {
+    if (thickness > 2.0) {
+      return GrillType.THICK;
+    }
+    return GrillType.THIN;
   }
 }

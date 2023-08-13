@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:helpmeat/screens/arguments/grill_settings_arguments.dart';
 import 'package:helpmeat/utils/resources.dart';
 
-class NextButton extends StatelessWidget {
+class AppTextButton extends StatelessWidget {
   final void Function() onPressed;
+  final String text;
 
-  const NextButton({Key? key, required this.onPressed}) : super(key: key);
+  const AppTextButton({Key? key, required this.onPressed, this.text = '다음'}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 80,
       padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
@@ -17,7 +19,7 @@ class NextButton extends StatelessWidget {
             backgroundColor: AppThemes.mainPink,
             minimumSize: Size(double.infinity, double.infinity)),
         onPressed: onPressed,
-        child: Text("다음", style: TextStyle(color: Colors.white, fontSize: 25)),
+        child: Text(text, style: TextStyle(color: Colors.white, fontSize: 25)),
       ),
     );
   }

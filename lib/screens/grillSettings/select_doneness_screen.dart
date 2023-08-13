@@ -47,7 +47,7 @@ class _SelectDonenessScreenState extends State<SelectDonenessScreen> {
           });
         },
       ),
-      bottom: NextButton(
+      bottom: AppTextButton(
         onPressed: () {
           widget.args.donenessInfo= donenessInfoList[selectedItem];
           AppNavigator.push(context, Screens.SELECT_FIRE_SCREEN, widget.args);

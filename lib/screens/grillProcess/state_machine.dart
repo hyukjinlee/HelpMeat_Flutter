@@ -1,100 +1,81 @@
+import 'package:flutter/material.dart';
 import 'package:helpmeat/screens/grillProcess/state/screen_info.dart';
+import 'package:helpmeat/screens/grillProcess/state/start_state.dart';
+import 'package:helpmeat/screens/grillProcess/state/timer_state.dart';
 
 class StateMachine {
-  late Type _type;
-  late State _currentState;
+  late BuildContext _context;
+  late GrillType _type;
+  GrillState _currentState = GrillState.NONE;
   late ScreenInfo _screenInfo;
+  late void Function() _onFinished;
 
-  void init(Type type) {
+  bool hasGrillState() {
+    if (_currentState != GrillState.NONE) {
+      return true;
+    }
+    return false;
+  }
+
+  void init(BuildContext context, GrillType type, void Function() onFinished) {
+    _context = context;
     _type = type;
-    _currentState = State.START;
-    // _screenInfo = StartState();
+    _onFinished = onFinished;
+    _currentState = GrillState.START;
+    _screenInfo = StartState(context: _context, onFinished: _onFinished);
+  }
+
+  ScreenInfo getScreenInfo() {
+    return _screenInfo;
   }
 
   void next() {
     switch (_type) {
-      case Type.THIN:
-        nextForThin();
+      case GrillType.THIN:
+        _nextForThin();
         break;
-      case Type.THICK:
-        nextForThick();
+      case GrillType.THICK:
+        _nextForThick();
         break;
     }
   }
 
-  void nextForThin() {
+  void _nextForThin() {
     switch (_currentState) {
-      case State.START:
-        _currentState = State.TIMER_FRONT;
+      case GrillState.START:
+        _currentState = GrillState.TIMER_FRONT;
+        _screenInfo = TimerState(context: _context, onFinished: _onFinished);
         break;
-      case State.TIMER_FRONT:
-        _currentState = State.TURN_OVER_FRONT;
+      case GrillState.TIMER_FRONT:
+        _currentState = GrillState.TURN_OVER_FRONT;
         break;
-      case State.TURN_OVER_FRONT:
-        _currentState = State.TIMER_BACK;
+      case GrillState.TURN_OVER_FRONT:
+        _currentState = GrillState.TIMER_BACK;
         break;
-      case State.TIMER_BACK:
-        _currentState = State.TURN_OVER_BACK_WITH_CUTTING;
+      case GrillState.TIMER_BACK:
+        _currentState = GrillState.FINISH;
         break;
-      case State.TURN_OVER_BACK_WITH_CUTTING:
-        _currentState = State.FINISH;
-        break;
-      case State.FINISH:
+      case GrillState.FINISH:
       default:
         break;
     }
   }
 
-  void nextForThick() {
-    switch (_currentState) {
-      case State.START:
-        _currentState = State.TIMER_FRONT;
-        break;
-      case State.TIMER_FRONT:
-        _currentState = State.TURN_OVER_FRONT;
-        break;
-      case State.TURN_OVER_FRONT:
-        _currentState = State.TIMER_BACK;
-        break;
-      case State.TIMER_BACK:
-        _currentState = State.TURN_OVER_BACK_WITH_CUTTING;
-        break;
-      case State.TURN_OVER_BACK_WITH_CUTTING:
-        _currentState = State.TIMER_RIGHT;
-        break;
-      case State.TIMER_RIGHT:
-        _currentState = State.TURN_OVER_RIGHT;
-        break;
-      case State.TURN_OVER_RIGHT:
-        _currentState = State.TIMER_LEFT;
-        break;
-      case State.TIMER_LEFT:
-        _currentState = State.TURN_OVER_LEFT;
-        break;
-      case State.TURN_OVER_LEFT:
-        _currentState = State.FINISH;
-        break;
-      case State.FINISH:
-      default:
-        break;
-    }
+  void _nextForThick() {
+    // Nothing to do
   }
 }
 
-enum Type {
+enum GrillType {
   THIN,
   THICK,
 }
 
-enum State {
+enum GrillState {
+  NONE,
   START,
   TIMER_FRONT,
-  TIMER_BACK,
-  TIMER_LEFT,
-  TIMER_RIGHT,
   TURN_OVER_FRONT,
-  TURN_OVER_BACK_WITH_CUTTING,
-  TURN_OVER_LEFT,
-  TURN_OVER_RIGHT,
+  TIMER_BACK,
   FINISH
 }

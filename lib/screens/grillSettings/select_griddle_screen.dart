@@ -46,7 +46,7 @@ class _SelectGriddleScreenState extends State<SelectGriddleScreen> {
           });
         },
       ),
-      bottom: NextButton(
+      bottom: AppTextButton(
         onPressed: () {
           widget.args.griddleInfo = griddleInfoList[selectedItem];
           AppNavigator.push(context, Screens.FINISH_SETTINGS_SCREEN, widget.args);

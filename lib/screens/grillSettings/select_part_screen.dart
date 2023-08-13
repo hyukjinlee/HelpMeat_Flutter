@@ -49,7 +49,7 @@ class _SelectPartScreenState extends State<SelectPartScreen> {
             });
           },
       ),
-      bottom: NextButton(
+      bottom: AppTextButton(
         onPressed: () {
           widget.args.meatInfo = meatInfoList[selectedItem];
           AppNavigator.push(context, Screens.SELECT_THICKNESS_SCREEN, widget.args);
