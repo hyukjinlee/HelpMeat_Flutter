@@ -7,8 +7,12 @@ class AppTextButton extends StatelessWidget {
   final String _text;
   final bool _invertColor;
 
-  const AppTextButton({Key? key, required onPressed, text = '다음', invertColor = false})
-      : _text = text, _onPressed = onPressed, _invertColor = invertColor, super(key: key);
+  const AppTextButton(
+      {Key? key, required onPressed, text = '다음', invertColor = false})
+      : _text = text,
+        _onPressed = onPressed,
+        _invertColor = invertColor,
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +46,9 @@ class VerticalTextImageUI extends StatelessWidget {
   final String text;
   final String imagePath;
 
-  const VerticalTextImageUI({Key? key, required this.text, required this.imagePath}) : super(key: key);
+  const VerticalTextImageUI(
+      {Key? key, required this.text, required this.imagePath})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -51,15 +57,12 @@ class VerticalTextImageUI extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Text.rich(
-          TextSpan(
-              style: DefaultTextStyle.of(context).style,
-              children: [
-                TextSpan(
-                  text: text,
-                  style: TextStyle(fontSize: 25),
-                ),
-              ]
-          ),
+          TextSpan(style: DefaultTextStyle.of(context).style, children: [
+            TextSpan(
+              text: text,
+              style: TextStyle(fontSize: 25),
+            ),
+          ]),
           textAlign: TextAlign.center,
         ),
         Image(
@@ -78,7 +81,13 @@ class GrillSettingsListView extends StatelessWidget {
   final int selectedItem;
   final bool isKorean;
 
-  const GrillSettingsListView({Key? key, required this.isKorean, required this.elementList, required this.selectedItem, required this.onSelectedItemChanged}) : super(key: key);
+  const GrillSettingsListView(
+      {Key? key,
+      required this.isKorean,
+      required this.elementList,
+      required this.selectedItem,
+      required this.onSelectedItemChanged})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +98,11 @@ class GrillSettingsListView extends StatelessWidget {
       childDelegate: ListWheelChildBuilderDelegate(
         childCount: elementList.length,
         builder: (context, index) {
-          return ListViewItem(isSelected: index == selectedItem, isKorean: isKorean, text: elementList[index].name,);
+          return ListViewItem(
+            isSelected: index == selectedItem,
+            isKorean: isKorean,
+            text: elementList[index].name,
+          );
         },
       ),
       onSelectedItemChanged: onSelectedItemChanged,
@@ -97,13 +110,17 @@ class GrillSettingsListView extends StatelessWidget {
   }
 }
 
-
 class ListViewItem extends StatelessWidget {
   final bool isSelected;
   final String text;
   final bool isKorean;
 
-  const ListViewItem({Key? key, required this.isSelected, required this.isKorean, required this.text}) : super(key: key);
+  const ListViewItem(
+      {Key? key,
+      required this.isSelected,
+      required this.isKorean,
+      required this.text})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -136,5 +153,48 @@ class ListViewItem extends StatelessWidget {
       );
     }
     return item;
+  }
+}
+
+class AlertDialogActionButton extends StatelessWidget {
+  final void Function() _onPressed;
+  final String _text;
+  final bool _invertColor;
+
+  const AlertDialogActionButton(
+      {Key? key, required onPressed, required text, invertColor = false})
+      : _text = text,
+        _onPressed = onPressed,
+        _invertColor = invertColor,
+        super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    Color backgroundColor;
+    Color textColor;
+
+    if (_invertColor) {
+      textColor = AppThemes.mainPink;
+      backgroundColor = Colors.white;
+    } else {
+      textColor = Colors.white;
+      backgroundColor = AppThemes.mainPink;
+    }
+
+    return Container(
+      width: 120,
+      height: 80,
+      padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(AppThemes.radius),
+                side: BorderSide(color: AppThemes.mainPink, width: 2)),
+            backgroundColor: backgroundColor,
+            minimumSize: Size(double.infinity, double.infinity)),
+        onPressed: _onPressed,
+        child: Text(_text, style: TextStyle(color: textColor, fontSize: 20)),
+      ),
+    );
   }
 }
