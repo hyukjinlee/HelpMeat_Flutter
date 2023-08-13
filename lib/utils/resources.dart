@@ -139,7 +139,7 @@ class ResourceUtils {
       FireInfo(name: "숯불", fireType: FireType.CHARCOAL, imagePath: 'assets/charcoal.png'),
       FireInfo(name: "버너", fireType: FireType.GAS_STOVE, imagePath: 'assets/gas_stove.png'),
       FireInfo(name: "인덕션", fireType: FireType.INDUCTION, imagePath: 'assets/induction.png'),
-      FireInfo(name: "전기 그릴", fireType: FireType.INDUCTION, imagePath: 'assets/induction.png'),
+      FireInfo(name: "전기 그릴", fireType: FireType.ELECTRIC_GRILL, imagePath: 'assets/electric_grill.png'),
     ];
   }
 
@@ -165,7 +165,7 @@ class ResourceUtils {
         ];
       case FireType.ELECTRIC_GRILL:
         return <GriddleInfo>[
-          GriddleInfo(name: "전기그릴", griddleType: GriddleType.FRYING_PAN, imagePath: 'assets/coating_griddle.png'),
+          GriddleInfo(name: "전기그릴", griddleType: GriddleType.ELECTRIC_GRILL, imagePath: 'assets/electric_grill.png'),
         ];
     }
   }
