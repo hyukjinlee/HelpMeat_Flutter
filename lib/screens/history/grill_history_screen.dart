@@ -2,22 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:helpmeat/screens/arguments/grill_settings_arguments.dart';
 import 'package:helpmeat/utils/resources.dart';
 
-/// 굽기 진행 완료 화면
-class FinishGrillingPage extends StatefulWidget {
+/// 굽기 이력 화면
+class GrillHistoryScreen extends StatefulWidget {
   final GrillSettingsArguments args;
 
-  FinishGrillingPage({Key? key, required this.args}) : super(key: key);
+  GrillHistoryScreen({Key? key, required this.args}) : super(key: key);
 
   @override
-  State<FinishGrillingPage> createState() => _FinishGrillingPageState();
+  State<GrillHistoryScreen> createState() => _GrillHistoryScreenState();
 }
 
-class _FinishGrillingPageState extends State<FinishGrillingPage> {
+class _GrillHistoryScreenState extends State<GrillHistoryScreen> {
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: Center(
         child: IndicateText(),
       ),
     );
@@ -30,23 +30,19 @@ class IndicateText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle bigTextStyle = TextStyle(fontSize: 25);
-    TextStyle smallTextStyle = TextStyle(fontSize: 10, color: AppThemes.mainPink);
+    TextStyle bigTextStyle = TextStyle(fontSize: 25, color: AppThemes.mainPink);
+    TextStyle smallTextStyle = TextStyle(fontSize: 10);
 
     return Text.rich(
       TextSpan(
           style: DefaultTextStyle.of(context).style,
           children: [
             TextSpan(
-              text: 'Meat\n',
+              text: '고기 굽기 이력\n',
               style: bigTextStyle,
             ),
             TextSpan(
-              text: 'Complete\n',
-              style: bigTextStyle,
-            ),
-            TextSpan(
-              text: '"기다린 자, 즐겨라!"',
+              text: '임시 페이지\n',
               style: smallTextStyle,
             ),
           ]

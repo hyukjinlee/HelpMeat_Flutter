@@ -3,9 +3,9 @@ import 'package:helpmeat/screens/grillProcess/state/screen_info.dart';
 import 'package:helpmeat/utils/resources.dart';
 import 'package:helpmeat/widgets/ui_widget.dart';
 
-class StartState extends ScreenInfo {
-  const StartState({required BuildContext context, required void Function() onFinished})
-      : super(context: context, onFinished: onFinished);
+class FinishState extends ScreenInfo {
+  const FinishState({required BuildContext context, required void Function() onFinished, required void Function() onTerminated})
+      : super(context: context, onFinished: onFinished, onTerminated: onTerminated);
 
   @override
   Widget getTopWidget() {
@@ -19,7 +19,13 @@ class StartState extends ScreenInfo {
 
   @override
   Widget getBottomWidget() {
-    return AppTextButton(onPressed: onFinished, text: '고기를 올렸다면 터치',);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        AppTextButton(onPressed: onFinished, text: '똑같이 한번 더 굽기',),
+        AppTextButton(onPressed: onTerminated!, text: '완료', invertColor: true),
+      ],
+    );
   }
 }
 
@@ -28,7 +34,7 @@ class IndicateText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle smallTextStyle = TextStyle(fontSize: 20, color: AppThemes.mainPink);
+    TextStyle smallTextStyle = TextStyle(fontSize: 15, color: AppThemes.mainPink);
     TextStyle bigTextStyle = TextStyle(fontSize: 35, color: AppThemes.mainPink);
 
     return Text.rich(
@@ -36,16 +42,16 @@ class IndicateText extends StatelessWidget {
           style: DefaultTextStyle.of(context).style,
           children: [
             TextSpan(
-              text: '고기를 올렸을 때\n',
+              text: '이제 가위로 자르고\n',
+              style: bigTextStyle,
+            ),
+            TextSpan(
+              text: '맛있게 드세요!\n',
+              style: bigTextStyle,
+            ),
+            TextSpan(
+              text: '기호에 따라 조금 더 구우세요',
               style: smallTextStyle,
-            ),
-            TextSpan(
-              text: '치  -  이  -  익\n',
-              style: bigTextStyle,
-            ),
-            TextSpan(
-              text: '소리가 났나요?',
-              style: bigTextStyle,
             ),
           ]
       ),

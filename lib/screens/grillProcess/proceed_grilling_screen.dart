@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:helpmeat/navigators/navigator.dart';
 import 'package:helpmeat/screens/arguments/grill_settings_arguments.dart';
 import 'package:helpmeat/screens/grillProcess/state/screen_info.dart';
 import 'package:helpmeat/screens/grillProcess/state_machine.dart';
@@ -6,22 +7,22 @@ import 'package:helpmeat/utils/resources.dart';
 import 'package:helpmeat/utils/util.dart';
 
 /// 굽기 진행 페이지
-class ProceedGrillingPage extends StatefulWidget {
+class ProceedGrillingScreen extends StatefulWidget {
   final GrillSettingsArguments args;
 
-  ProceedGrillingPage({Key? key, required this.args}) : super(key: key);
+  ProceedGrillingScreen({Key? key, required this.args}) : super(key: key);
 
   @override
-  State<ProceedGrillingPage> createState() => _ProceedGrillingPageState();
+  State<ProceedGrillingScreen> createState() => _ProceedGrillingScreenState();
 }
 
-class _ProceedGrillingPageState extends State<ProceedGrillingPage> {
+class _ProceedGrillingScreenState extends State<ProceedGrillingScreen> {
   final StateMachine _stateMachine = StateMachine();
 
   @override
   Widget build(BuildContext context) {
     if (!_stateMachine.hasGrillState()) {
-      _stateMachine.init(context, Utils.getGrillType(widget.args.thickness!), goNextStep,
+      _stateMachine.init(context, Utils.getGrillType(widget.args.thickness!), goNextStep, finishGrilling
       );
     }
 
@@ -49,5 +50,9 @@ class _ProceedGrillingPageState extends State<ProceedGrillingPage> {
     setState(() {
       _stateMachine.next();
     });
+  }
+
+  void finishGrilling() {
+    AppNavigator.push(context, Screens.GRILL_HISTORY_SCREEN, widget.args);
   }
 }

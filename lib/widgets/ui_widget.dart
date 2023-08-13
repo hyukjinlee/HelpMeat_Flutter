@@ -3,23 +3,36 @@ import 'package:helpmeat/screens/arguments/grill_settings_arguments.dart';
 import 'package:helpmeat/utils/resources.dart';
 
 class AppTextButton extends StatelessWidget {
-  final void Function() onPressed;
-  final String text;
+  final void Function() _onPressed;
+  final String _text;
+  final bool _invertColor;
 
-  const AppTextButton({Key? key, required this.onPressed, this.text = '다음'}) : super(key: key);
+  const AppTextButton({Key? key, required onPressed, text = '다음', invertColor = false})
+      : _text = text, _onPressed = onPressed, _invertColor = invertColor, super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Color backgroundColor;
+    Color textColor;
+
+    if (_invertColor) {
+      textColor = AppThemes.mainPink;
+      backgroundColor = Colors.white;
+    } else {
+      textColor = Colors.white;
+      backgroundColor = AppThemes.mainPink;
+    }
+
     return Container(
       height: 80,
       padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
             shape: StadiumBorder(),
-            backgroundColor: AppThemes.mainPink,
+            backgroundColor: backgroundColor,
             minimumSize: Size(double.infinity, double.infinity)),
-        onPressed: onPressed,
-        child: Text(text, style: TextStyle(color: Colors.white, fontSize: 25)),
+        onPressed: _onPressed,
+        child: Text(_text, style: TextStyle(color: textColor, fontSize: 25)),
       ),
     );
   }
