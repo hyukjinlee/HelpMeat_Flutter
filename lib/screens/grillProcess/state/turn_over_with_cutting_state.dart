@@ -3,8 +3,8 @@ import 'package:helpmeat/screens/grillProcess/state/screen_info.dart';
 import 'package:helpmeat/utils/resources.dart';
 import 'package:helpmeat/widgets/ui_widget.dart';
 
-class TurnOverState extends ScreenInfo {
-  const TurnOverState({required BuildContext context, required void Function() onFinished})
+class TurnOverWithCuttingState extends ScreenInfo {
+  const TurnOverWithCuttingState({required BuildContext context, required void Function() onFinished})
       : super(context: context, onFinished: onFinished);
 
   @override
@@ -36,11 +36,15 @@ class IndicateText extends StatelessWidget {
           style: DefaultTextStyle.of(context).style,
           children: [
             TextSpan(
-              text: '"앗 뜨뜨!"\n',
+              text: '이제 옆면을 구울 차례입니다!\n',
               style: smallTextStyle,
             ),
             TextSpan(
-              text: '뒤집어 주세요\n',
+              text: '기호에 맞게 자르고\n',
+              style: bigTextStyle,
+            ),
+            TextSpan(
+              text: '뒤집어주세요\n',
               style: bigTextStyle,
             ),
           ]

@@ -34,7 +34,7 @@ class IndicateText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle smallTextStyle = TextStyle(fontSize: 15, color: AppThemes.mainPink);
+    TextStyle smallTextStyle = TextStyle(fontSize: 18, color: AppThemes.mainPink);
     TextStyle bigTextStyle = TextStyle(fontSize: 35, color: AppThemes.mainPink);
 
     return Text.rich(

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:helpmeat/screens/grillProcess/state/finish_state.dart';
 import 'package:helpmeat/screens/grillProcess/state/finish_with_cutting_state.dart';
 import 'package:helpmeat/screens/grillProcess/state/screen_info.dart';
 import 'package:helpmeat/screens/grillProcess/state/start_state.dart';
 import 'package:helpmeat/screens/grillProcess/state/timer_state.dart';
 import 'package:helpmeat/screens/grillProcess/state/turn_over_state.dart';
+import 'package:helpmeat/screens/grillProcess/state/turn_over_with_cutting_state.dart';
 import 'package:helpmeat/screens/grillProcess/type.dart';
 
 class StateMachine {
@@ -78,18 +80,23 @@ class StateMachine {
     switch (_currentState) {
       case GrillState.TIMER_BACK:
         _currentState = GrillState.TURN_OVER_BACK_WITH_CUTTING;
+        _screenInfo = TurnOverWithCuttingState(context: _context, onFinished: _onFinished);
         break;
       case GrillState.TURN_OVER_BACK_WITH_CUTTING:
         _currentState = GrillState.TIMER_LEFT;
+        _screenInfo = TimerState(context: _context, onFinished: _onFinished, grillState: GrillState.TIMER_LEFT);
         break;
       case GrillState.TIMER_LEFT:
         _currentState = GrillState.TURN_OVER_LEFT;
+        _screenInfo = TurnOverState(context: _context, onFinished: _onFinished);
         break;
       case GrillState.TURN_OVER_LEFT:
         _currentState = GrillState.TIMER_RIGHT;
+        _screenInfo = TimerState(context: _context, onFinished: _onFinished, grillState: GrillState.TIMER_RIGHT);
         break;
       case GrillState.TIMER_RIGHT:
         _currentState = GrillState.FINISH;
+        _screenInfo = FinishState(context: _context, onFinished: _onFinished, onTerminated: _onTerminated);
         break;
       case GrillState.FINISH:
         _currentState = GrillState.START;
