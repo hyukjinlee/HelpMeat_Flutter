@@ -3,8 +3,8 @@ import 'package:helpmeat/screens/grillProcess/state/screen_info.dart';
 import 'package:helpmeat/utils/resources.dart';
 import 'package:helpmeat/widgets/ui_widget.dart';
 
-class FinishState extends ScreenInfo {
-  const FinishState({required BuildContext context, required void Function() onFinished, required void Function() onTerminated})
+class FinishWithCuttingState extends ScreenInfo {
+  const FinishWithCuttingState({required BuildContext context, required void Function() onFinished, required void Function() onTerminated})
       : super(context: context, onFinished: onFinished, onTerminated: onTerminated);
 
   @override

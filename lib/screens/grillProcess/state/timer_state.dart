@@ -2,16 +2,18 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:helpmeat/screens/grillProcess/state/screen_info.dart';
+import 'package:helpmeat/screens/grillProcess/type.dart';
 import 'package:helpmeat/utils/resources.dart';
 
 class TimerState extends ScreenInfo {
+  final GrillState _grillState;
   const TimerState(
-      {required BuildContext context, required void Function() onFinished})
-      : super(context: context, onFinished: onFinished);
+      {required BuildContext context, required void Function() onFinished, required GrillState grillState})
+      : _grillState = grillState, super(context: context, onFinished: onFinished);
 
   @override
   Widget getTopWidget() {
-    return IndicateText();
+    return IndicateText(grillState: _grillState,);
   }
 
   @override
@@ -26,7 +28,8 @@ class TimerState extends ScreenInfo {
 }
 
 class IndicateText extends StatelessWidget {
-  const IndicateText({Key? key}) : super(key: key);
+  final GrillState _grillState;
+  const IndicateText({Key? key, required GrillState grillState}) : _grillState = grillState, super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +40,7 @@ class IndicateText extends StatelessWidget {
     return Text.rich(
       TextSpan(style: DefaultTextStyle.of(context).style, children: [
         TextSpan(
-          text: '굉장히 맛있게\n',
+          text: '굉장히 맛있게, ${_getSideText()}\n',
           style: smallTextStyle,
         ),
         TextSpan(
@@ -51,6 +54,21 @@ class IndicateText extends StatelessWidget {
       ]),
       textAlign: TextAlign.center,
     );
+  }
+
+  String _getSideText() {
+    switch (_grillState) {
+      case GrillState.TIMER_FRONT:
+        return '고기 앞면';
+      case GrillState.TIMER_BACK:
+        return '고기 뒷면';
+      case GrillState.TIMER_LEFT:
+        return '고기 옆면';
+      case GrillState.TIMER_RIGHT:
+        return '고기 마지막 면';
+      default:
+        return '';
+    }
   }
 }
 
