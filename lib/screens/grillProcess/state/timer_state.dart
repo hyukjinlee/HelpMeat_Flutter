@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:helpmeat/screens/grillProcess/state/screen_info.dart';
 import 'package:helpmeat/screens/grillProcess/type.dart';
@@ -7,8 +5,8 @@ import 'package:helpmeat/utils/resources.dart';
 
 class TimerState extends ScreenInfo {
   final GrillState _grillState;
-  const TimerState(
-      {required BuildContext context, required void Function() onFinished, required GrillState grillState})
+
+  const TimerState({required BuildContext context, required void Function() onFinished, required GrillState grillState})
       : _grillState = grillState, super(context: context, onFinished: onFinished);
 
   @override
@@ -29,12 +27,12 @@ class TimerState extends ScreenInfo {
 
 class IndicateText extends StatelessWidget {
   final GrillState _grillState;
-  const IndicateText({Key? key, required GrillState grillState}) : _grillState = grillState, super(key: key);
+
+  const IndicateText({Key? key, required GrillState grillState}): _grillState = grillState, super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    TextStyle smallTextStyle =
-        TextStyle(fontSize: 15, color: AppThemes.mainPink);
+    TextStyle smallTextStyle = TextStyle(fontSize: 15, color: AppThemes.mainPink);
     TextStyle bigTextStyle = TextStyle(fontSize: 50, color: AppThemes.mainPink);
 
     return Text.rich(
@@ -80,17 +78,21 @@ class TimerWidget extends StatefulWidget {
   State<TimerWidget> createState() => _TimerWidgetState();
 }
 
-class _TimerWidgetState extends State<TimerWidget> {
-  int _seconds = 3;
-  late Timer _timer;
+class _TimerWidgetState extends State<TimerWidget> with SingleTickerProviderStateMixin {
+  double _fraction = 0.0;
+  late Animation<double> _animation;
+  late AnimationController _controller;
 
+  final int _settingValue = 10;
+  int _seconds = 10;
 
   @override
   void initState() {
     super.initState();
+
+    initTimer();
     startTimer();
   }
-
 
   @override
   void dispose() {
@@ -98,35 +100,98 @@ class _TimerWidgetState extends State<TimerWidget> {
     super.dispose();
   }
 
-  void startTimer() {
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
-      setState(() {
-        _seconds--;
-        if (_seconds < 0) {
-          stopTimer();
-          widget.onFinished.call();
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      height: 300,
+      child: Stack(
+        children: [
+          Positioned.fill(
+            child: Align(
+              alignment: Alignment.center,
+              child: AspectRatio(
+                aspectRatio: 1.0,
+                child: Padding(
+                  padding: const EdgeInsets.all(24.0),
+                  child: CustomPaint(
+                    painter: CirclePainter(fraction: _fraction),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Positioned.fill(
+            child: Align(
+              alignment: Alignment.center,
+              child: Container(
+                width: 100,
+                height: 40,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(AppThemes.hard_radius),
+                    color: AppThemes.mainPink),
+                child: Center(
+                  child: Text('${_seconds}s',
+                      style: TextStyle(fontSize: 25, color: Colors.white)),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void initTimer() {
+    _controller = AnimationController(duration: Duration(milliseconds: _settingValue * 1000), vsync: this);
+    _animation = Tween(begin: 1.0, end: 0.0).animate(_controller)
+      ..addListener(() {
+        setState(() {
+          _fraction = _animation.value;
+          _seconds = (_settingValue * _fraction).toInt() + 1;
+        });
+      })
+      ..addStatusListener((status) {
+        if (status == AnimationStatus.completed) {
+          setState(() {
+            _seconds = 0;
+            widget.onFinished.call();
+          });
         }
       });
-    });
+  }
+
+  void startTimer() {
+    _controller.forward();
   }
 
   void stopTimer() {
-    _timer.cancel();
+    _controller.dispose();
+  }
+}
+
+class CirclePainter extends CustomPainter {
+  final double fraction;
+  late Paint _circlePaint;
+
+  CirclePainter({required this.fraction}) {
+    _circlePaint = Paint()
+      ..color = AppThemes.mainPink
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 15.0
+      ..strokeCap = StrokeCap.round;
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 100,
-      height: 40,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(AppThemes.hard_radius),
-        color: AppThemes.mainPink
-      ),
-      child: Center(
-        child: Text('${_seconds}s',
-            style: TextStyle(fontSize: 25, color: Colors.white)),
-      ),
-    );
+  void paint(Canvas canvas, Size size) {
+    var rect = Offset(0.0, 0.0) & size;
+    var pi = 3.141592;
+
+    canvas.drawArc(rect, -pi / 2, -pi * 2 * fraction, false, _circlePaint);
+  }
+
+  @override
+  bool shouldRepaint(CirclePainter oldDelegate) {
+    return oldDelegate.fraction != fraction;
   }
 }
