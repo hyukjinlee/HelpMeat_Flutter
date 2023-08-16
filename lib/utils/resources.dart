@@ -15,8 +15,8 @@ class AppThemes {
 class ResourceUtils {
   static String getMeatImagePath(MeatType meatType) {
     switch (meatType) {
-      case MeatType.MEAT_TYPE_FORK:
-        return 'assets/fork.png';
+      case MeatType.MEAT_TYPE_PORK:
+        return 'assets/pork.png';
       case MeatType.MEAT_TYPE_BEEF:
         return 'assets/beef.png';
       default:
@@ -26,7 +26,7 @@ class ResourceUtils {
 
   static String getMeatText(MeatType meatType) {
     switch (meatType) {
-      case MeatType.MEAT_TYPE_FORK:
+      case MeatType.MEAT_TYPE_PORK:
         return '돼지고기';
       case MeatType.MEAT_TYPE_BEEF:
         return '소고기';
@@ -49,17 +49,17 @@ class ResourceUtils {
           MeatInfo(name: "채끝살", meatPartType: MeatPartType.BEEF_PART_TYPE_CHAEKKEUT, imagePath: 'assets/beef_chaekkeut.png'),
           MeatInfo(name: "토시살", meatPartType: MeatPartType.BEEF_PART_TYPE_TOSI, imagePath: 'assets/beef_tosi.png'),];
 
-      case MeatType.MEAT_TYPE_FORK:
+      case MeatType.MEAT_TYPE_PORK:
         return <MeatInfo>[
-          MeatInfo(name: "갈비살", meatPartType: MeatPartType.FORK_PART_TYPE_GALBI, imagePath: 'assets/fork_galbi.png'),
-          MeatInfo(name: "갈매기살", meatPartType: MeatPartType.FORK_PART_TYPE_GALMAEGI, imagePath: 'assets/fork_galmaegi.png'),
-          MeatInfo(name: "뒷다리살", meatPartType: MeatPartType.FORK_PART_TYPE_DUITDARI, imagePath: 'assets/fork_duitdari.png'),
-          MeatInfo(name: "등심", meatPartType: MeatPartType.FORK_PART_TYPE_DEUNGSIM, imagePath: 'assets/fork_deungsim.png'),
-          MeatInfo(name: "목살", meatPartType: MeatPartType.FORK_PART_TYPE_MOKSAL, imagePath: 'assets/fork_moksal.png'),
-          MeatInfo(name: "안심", meatPartType: MeatPartType.FORK_PART_TYPE_ANSIM, imagePath: 'assets/fork_ansim.png'),
-          MeatInfo(name: "앞다리살", meatPartType: MeatPartType.FORK_PART_TYPE_ABDARI, imagePath: 'assets/fork_abdari.png'),
-          MeatInfo(name: "삼겹살", meatPartType: MeatPartType.FORK_PART_TYPE_SAMGYEUP, imagePath: 'assets/fork_samgyeup.png'),
-          MeatInfo(name: "항정살", meatPartType: MeatPartType.FORK_PART_TYPE_HANGJEONG, imagePath: 'assets/fork_hangjeong.png'),];
+          MeatInfo(name: "갈비살", meatPartType: MeatPartType.PORK_PART_TYPE_GALBI, imagePath: 'assets/pork_galbi.png'),
+          MeatInfo(name: "갈매기살", meatPartType: MeatPartType.PORK_PART_TYPE_GALMAEGI, imagePath: 'assets/pork_galmaegi.png'),
+          MeatInfo(name: "뒷다리살", meatPartType: MeatPartType.PORK_PART_TYPE_DUITDARI, imagePath: 'assets/pork_duitdari.png'),
+          MeatInfo(name: "등심", meatPartType: MeatPartType.PORK_PART_TYPE_DEUNGSIM, imagePath: 'assets/pork_deungsim.png'),
+          MeatInfo(name: "목살", meatPartType: MeatPartType.PORK_PART_TYPE_MOKSAL, imagePath: 'assets/pork_moksal.png'),
+          MeatInfo(name: "안심", meatPartType: MeatPartType.PORK_PART_TYPE_ANSIM, imagePath: 'assets/pork_ansim.png'),
+          MeatInfo(name: "앞다리살", meatPartType: MeatPartType.PORK_PART_TYPE_ABDARI, imagePath: 'assets/pork_abdari.png'),
+          MeatInfo(name: "삼겹살", meatPartType: MeatPartType.PORK_PART_TYPE_SAMGYEUP, imagePath: 'assets/pork_samgyeup.png'),
+          MeatInfo(name: "항정살", meatPartType: MeatPartType.PORK_PART_TYPE_HANGJEONG, imagePath: 'assets/pork_hangjeong.png'),];
       default:
         throw Exception();
     }
@@ -121,11 +121,11 @@ class ResourceUtils {
           DonenessInfo(name: "WELLDONE", donenessType: DonenessType.WELLDONE, imagePath: 'assets/beef_well_done.png'),
         ];
 
-      case MeatType.MEAT_TYPE_FORK:
+      case MeatType.MEAT_TYPE_PORK:
         return <DonenessInfo>[
-          DonenessInfo(name: "RARE", donenessType: DonenessType.RARE, imagePath: 'assets/fork.png'),
-          DonenessInfo(name: "MEDIUM", donenessType: DonenessType.MEDIUM, imagePath: 'assets/fork_medium.png'),
-          DonenessInfo(name: "WELL DONE", donenessType: DonenessType.WELLDONE, imagePath: 'assets/fork_well_done.png'),
+          DonenessInfo(name: "RARE", donenessType: DonenessType.RARE, imagePath: 'assets/pork.png'),
+          DonenessInfo(name: "MEDIUM", donenessType: DonenessType.MEDIUM, imagePath: 'assets/pork_medium.png'),
+          DonenessInfo(name: "WELL DONE", donenessType: DonenessType.WELLDONE, imagePath: 'assets/pork_well_done.png'),
         ];
       default:
         throw Exception();

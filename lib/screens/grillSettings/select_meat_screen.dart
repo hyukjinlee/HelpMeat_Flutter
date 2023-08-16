@@ -22,7 +22,7 @@ class SelectMeatScreen extends StatelessWidget {
       middle: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: const [
-          TextImageButton(meatType: MeatType.MEAT_TYPE_FORK),
+          TextImageButton(meatType: MeatType.MEAT_TYPE_PORK),
           Divider(
               color: AppThemes.screenBackGround,
               thickness: 1.0,
