@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:helpmeat/notification/notification.dart';
 import 'package:helpmeat/screens/grillProcess/state/screen_info.dart';
 import 'package:helpmeat/screens/grillProcess/type.dart';
 import 'package:helpmeat/utils/resources.dart';
@@ -83,8 +84,8 @@ class _TimerWidgetState extends State<TimerWidget> with SingleTickerProviderStat
   late Animation<double> _animation;
   late AnimationController _controller;
 
-  final int _settingValue = 10;
-  int _seconds = 10;
+  final int _settingValue = 5;
+  int _seconds = 5;
 
   @override
   void initState() {
@@ -152,7 +153,11 @@ class _TimerWidgetState extends State<TimerWidget> with SingleTickerProviderStat
         });
       })
       ..addStatusListener((status) {
-        if (status == AnimationStatus.completed) {
+        if (status == AnimationStatus.forward) {
+          Future.delayed(Duration(seconds: _settingValue - 1), () {
+            NotificationManager.sendNotificationForTimer();
+          });
+        } else if (status == AnimationStatus.completed) {
           setState(() {
             _seconds = 0;
             widget.onFinished.call();

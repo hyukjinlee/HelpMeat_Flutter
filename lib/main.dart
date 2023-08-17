@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:helpmeat/methodChannels/method_channel_constants.dart';
-import 'package:helpmeat/methodChannels/notification_channel.dart';
 import 'package:helpmeat/navigators/navigator.dart';
+import 'package:helpmeat/notification/notification.dart';
+import 'package:helpmeat/utils/permission.dart';
 
 void main() {
   runApp(MyApp());
@@ -26,9 +25,29 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
-  final MethodChannel _channel = MethodChannel(AppMethodChannelConstants.METHOD_CHANNEL_ID);
-  var _text = "";
+class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
+  // late Future<String> permissionStatusFuture;
+
+  @override
+  void initState() {
+    NotificationManager.init();
+    // NotificationManager.requestNotificationPermission();
+    // Future.delayed(const Duration(seconds: 3), NotificationManager.requestNotificationPermission());
+
+    super.initState();
+
+    // permissionStatusFuture = getCheckNotificationPermStatus();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      setState(() {
+        // permissionStatusFuture = getCheckNotificationPermStatus();
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
         // 가운데
         child: Column(
           // 컬룸 추가
-          mainAxisAlignment: MainAxisAlignment.center, // 자식들은 가운데 정렬
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             ElevatedButton(
               child: Text('고기 굽기'),
@@ -49,15 +68,13 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
             ElevatedButton(
-              child: Text('모름'),
-              onPressed: () async {
-                String result = await AppNotificationChannel.getPlatformVersion(_channel);
-                setState(() {
-                  _text = result;
+              onPressed: () {
+                PermissionUtils.requestNotificationPermission(() {
+                  // permissionStatusFuture = getCheckNotificationPermStatus();
                 });
               },
-            ),
-            Text(_text),
+              child: Text('알림 권한 주기'),
+            )
           ],
         ),
       ),
