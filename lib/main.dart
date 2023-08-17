@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:helpmeat/methodChannels/method_channel_constants.dart';
+import 'package:helpmeat/methodChannels/notification_channel.dart';
 import 'package:helpmeat/navigators/navigator.dart';
 
 void main() {
@@ -18,7 +21,15 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final MethodChannel _channel = MethodChannel(AppMethodChannelConstants.METHOD_CHANNEL_ID);
+  var _text = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,21 +42,22 @@ class HomeScreen extends StatelessWidget {
           // 컬룸 추가
           mainAxisAlignment: MainAxisAlignment.center, // 자식들은 가운데 정렬
           children: <Widget>[
-            // 첫번째 자식. 파라미터를 명시적으로 전달하는 방식으로 라우트 호출
             ElevatedButton(
               child: Text('고기 굽기'),
               onPressed: () {
                 AppNavigator.push(context, Screens.SELECT_MEAT_SCREEN, null);
               },
             ),
-
-            // 두번째 자식
             ElevatedButton(
               child: Text('모름'),
-              onPressed: () {
-
+              onPressed: () async {
+                String result = await AppNotificationChannel.getPlatformVersion(_channel);
+                setState(() {
+                  _text = result;
+                });
               },
-            )
+            ),
+            Text(_text),
           ],
         ),
       ),
