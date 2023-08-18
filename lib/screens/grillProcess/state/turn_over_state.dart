@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:helpmeat/controller/alarm.dart';
 import 'package:helpmeat/screens/grillProcess/state/screen_info.dart';
 import 'package:helpmeat/utils/resources.dart';
 import 'package:helpmeat/widgets/ui_widget.dart';
@@ -20,10 +19,7 @@ class TurnOverState extends ScreenInfo {
 
   @override
   Widget getBottomWidget() {
-    return AppTextButton(onPressed: () {
-      AlarmManager.stop();
-      onFinished.call();
-    }, text: '뒤집었다면 터치',);
+    return AppTextButton(onPressed: onFinished, text: '뒤집었다면 터치',);
   }
 }
 

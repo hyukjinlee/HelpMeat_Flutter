@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:helpmeat/controller/alarm.dart';
 import 'package:helpmeat/controller/task.dart';
 import 'package:helpmeat/navigators/navigator.dart';
 import 'package:helpmeat/screens/arguments/grill_settings_arguments.dart';
+import 'package:helpmeat/screens/grillProcess/state/finish_state.dart';
+import 'package:helpmeat/screens/grillProcess/state/finish_with_cutting_state.dart';
 import 'package:helpmeat/screens/grillProcess/state/screen_info.dart';
+import 'package:helpmeat/screens/grillProcess/state/turn_over_state.dart';
+import 'package:helpmeat/screens/grillProcess/state/turn_over_with_cutting_state.dart';
 import 'package:helpmeat/screens/grillProcess/state_machine.dart';
 import 'package:helpmeat/utils/resources.dart';
 import 'package:helpmeat/utils/util.dart';
@@ -29,6 +34,9 @@ class _ProceedGrillingScreenState extends State<ProceedGrillingScreen> {
     }
 
     ScreenInfo screenInfo = _stateMachine.getScreenInfo();
+    if (_isNextPageOfTimer(screenInfo)) {
+      AlarmManager.stop();
+    }
 
     return WillPopScope(
       onWillPop: exitConfirm,
@@ -49,6 +57,16 @@ class _ProceedGrillingScreenState extends State<ProceedGrillingScreen> {
         ),
       ),
     );
+  }
+
+  bool _isNextPageOfTimer(ScreenInfo screenInfo) {
+    if (screenInfo is TurnOverState ||
+        screenInfo is TurnOverWithCuttingState ||
+        screenInfo is FinishState ||
+        screenInfo is FinishWithCuttingState) {
+      return true;
+    }
+    return false;
   }
 
   void goNextStep() {
