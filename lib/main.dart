@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:helpmeat/controller/notification.dart';
 import 'package:helpmeat/navigators/navigator.dart';
-import 'package:helpmeat/notification/notification.dart';
 import 'package:helpmeat/utils/permission.dart';
 
 void main() {

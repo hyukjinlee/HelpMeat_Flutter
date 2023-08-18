@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:helpmeat/notification/notification.dart';
+import 'package:helpmeat/controller/alarm.dart';
 import 'package:helpmeat/screens/grillProcess/state/screen_info.dart';
 import 'package:helpmeat/screens/grillProcess/type.dart';
 import 'package:helpmeat/utils/resources.dart';
@@ -155,7 +155,7 @@ class _TimerWidgetState extends State<TimerWidget> with SingleTickerProviderStat
       ..addStatusListener((status) {
         if (status == AnimationStatus.forward) {
           Future.delayed(Duration(seconds: _settingValue - 1), () {
-            NotificationManager.sendNotificationForTimer();
+            AlarmManager.start();
           });
         } else if (status == AnimationStatus.completed) {
           setState(() {

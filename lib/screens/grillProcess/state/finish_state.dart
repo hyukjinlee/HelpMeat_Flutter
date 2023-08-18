@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:helpmeat/controller/alarm.dart';
 import 'package:helpmeat/screens/grillProcess/state/screen_info.dart';
 import 'package:helpmeat/utils/resources.dart';
 import 'package:helpmeat/widgets/ui_widget.dart';
@@ -22,8 +23,14 @@ class FinishState extends ScreenInfo {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        AppTextButton(onPressed: onFinished, text: '똑같이 한번 더 굽기',),
-        AppTextButton(onPressed: onTerminated!, text: '완료', invertColor: true),
+        AppTextButton(onPressed: () {
+          AlarmManager.stop();
+          onFinished.call();
+        }, text: '똑같이 한번 더 굽기',),
+        AppTextButton(onPressed: () {
+          AlarmManager.stop();
+          onTerminated!.call();
+        }, text: '완료', invertColor: true),
       ],
     );
   }
