@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:helpmeat/controller/task.dart';
 import 'package:helpmeat/navigators/navigator.dart';
 import 'package:helpmeat/screens/arguments/grill_settings_arguments.dart';
 import 'package:helpmeat/screens/grillProcess/state/screen_info.dart';
@@ -81,7 +82,10 @@ class _ProceedGrillingScreenState extends State<ProceedGrillingScreen> {
               AlertDialogActionButton(
                 text: '뒤로 가기',
                 invertColor: true,
-                onPressed: () => Navigator.of(context).pop(true),
+                onPressed: () => {
+                  TaskManager.cancel(),
+                  Navigator.of(context).pop(true)
+                },
               ),
             ],
           ),
