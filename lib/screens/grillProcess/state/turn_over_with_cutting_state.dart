@@ -1,12 +1,16 @@
 
 import 'package:flutter/material.dart';
+import 'package:helpmeat/screens/arguments/grill_settings_arguments.dart';
 import 'package:helpmeat/screens/grillProcess/state/screen_info.dart';
 import 'package:helpmeat/utils/resources.dart';
 import 'package:helpmeat/widgets/ui_widget.dart';
 
 class TurnOverWithCuttingState extends ScreenInfo {
-  const TurnOverWithCuttingState({required BuildContext context, required void Function() onFinished})
-      : super(context: context, onFinished: onFinished);
+  const TurnOverWithCuttingState({
+    required BuildContext context,
+    required GrillSettingsArguments args,
+    required void Function() onFinished})
+      : super(context: context, args: args, onFinished: onFinished);
 
   @override
   Widget getTopWidget() {
@@ -15,7 +19,7 @@ class TurnOverWithCuttingState extends ScreenInfo {
 
   @override
   Widget getMiddleWidget() {
-    return IndicateImage();
+    return IndicateImage(imagePath: ResourceUtils.getTurnOverWithCuttingStateImagePath(args.meatType),);
   }
 
   @override
@@ -56,12 +60,13 @@ class IndicateText extends StatelessWidget {
 }
 
 class IndicateImage extends StatelessWidget {
-  const IndicateImage({Key? key}) : super(key: key);
+  final String imagePath;
+  const IndicateImage({Key? key, required this.imagePath}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Image(
-      image: AssetImage('${Constants.GRILL_SETTINGS_RESOURCES_PATH}beef_well_done.png'),
+      image: AssetImage(imagePath),
       width: 250,
       height: 250,
     );

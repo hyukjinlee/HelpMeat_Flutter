@@ -211,4 +211,116 @@ class ResourceUtils {
         }
     }
   }
+
+  /// Grill Process Screen
+  static String getStartStateImagePath(MeatType meatType, GriddleType griddleType) {
+    switch (meatType) {
+      case MeatType.MEAT_TYPE_BEEF:
+        switch (griddleType) {
+          case GriddleType.ELECTRIC_GRILL:
+            return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_electric_grill_start.png';
+          case GriddleType.GRIDIRON:
+            return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_gridiron_start.png';
+          case GriddleType.FRYING_PAN:
+            return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_frying_pan_start.png';
+          case GriddleType.COATING_GRIDDLE:
+            return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_coating_griddle_start.png';
+          case GriddleType.CALDRON_LID:
+            return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_caldron_lid_start.png';
+        }
+      case MeatType.MEAT_TYPE_PORK:
+        switch (griddleType) {
+          case GriddleType.ELECTRIC_GRILL:
+            return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_electric_grill_start.png';
+          case GriddleType.GRIDIRON:
+            return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_gridiron_start.png';
+          case GriddleType.FRYING_PAN:
+            return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_frying_pan_start.png';
+          case GriddleType.COATING_GRIDDLE:
+            return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_coating_griddle_start.png';
+          case GriddleType.CALDRON_LID:
+            return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_caldron_lid_start.png';
+        }
+    }
+  }
+
+  static String getTimerStateImagePath(MeatType meatType, GriddleType griddleType) {
+    switch (meatType) {
+      case MeatType.MEAT_TYPE_BEEF:
+        switch (griddleType) {
+          case GriddleType.ELECTRIC_GRILL:
+            return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_electric_grill_timer.png';
+          case GriddleType.GRIDIRON:
+            return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_gridiron_timer.png';
+          case GriddleType.FRYING_PAN:
+            return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_frying_pan_timer.png';
+          case GriddleType.COATING_GRIDDLE:
+            return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_coating_griddle_timer.png';
+          case GriddleType.CALDRON_LID:
+            return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_caldron_lid_timer.png';
+        }
+      case MeatType.MEAT_TYPE_PORK:
+        switch (griddleType) {
+          case GriddleType.ELECTRIC_GRILL:
+            return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_electric_grill_timer.png';
+          case GriddleType.GRIDIRON:
+            return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_gridiron_timer.png';
+          case GriddleType.FRYING_PAN:
+            return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_frying_pan_timer.png';
+          case GriddleType.COATING_GRIDDLE:
+            return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_coating_griddle_timer.png';
+          case GriddleType.CALDRON_LID:
+            return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_caldron_lid_timer.png';
+        }
+    }
+  }
+
+  static String getFinishStateImagePath(MeatType meatType, GriddleType griddleType) {
+    switch (meatType) {
+      case MeatType.MEAT_TYPE_BEEF:
+        switch (griddleType) {
+          case GriddleType.ELECTRIC_GRILL:
+            return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_electric_grill_finish.png';
+          case GriddleType.GRIDIRON:
+            return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_gridiron_finish.png';
+          case GriddleType.FRYING_PAN:
+            return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_frying_pan_finish.png';
+          case GriddleType.COATING_GRIDDLE:
+            return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_coating_griddle_finish.png';
+          case GriddleType.CALDRON_LID:
+            return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_caldron_lid_finish.png';
+        }
+      case MeatType.MEAT_TYPE_PORK:
+        switch (griddleType) {
+          case GriddleType.ELECTRIC_GRILL:
+            return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_electric_grill_finish.png';
+          case GriddleType.GRIDIRON:
+            return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_gridiron_finish.png';
+          case GriddleType.FRYING_PAN:
+            return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_frying_pan_finish.png';
+          case GriddleType.COATING_GRIDDLE:
+            return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_coating_griddle_finish.png';
+          case GriddleType.CALDRON_LID:
+            return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_caldron_lid_finish.png';
+        }
+    }
+  }
+
+  static String getTurnOverStateImagePath(MeatType meatType) {
+    switch (meatType) {
+      case MeatType.MEAT_TYPE_BEEF:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_turn_over.png';
+      case MeatType.MEAT_TYPE_PORK:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_turn_over.png';
+    }
+  }
+
+  static String getTurnOverWithCuttingStateImagePath(MeatType meatType) {
+    switch (meatType) {
+      case MeatType.MEAT_TYPE_BEEF:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_turn_over_with_cutting.png';
+      case MeatType.MEAT_TYPE_PORK:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_turn_over_with_cutting.png';
+    }
+  }
 }

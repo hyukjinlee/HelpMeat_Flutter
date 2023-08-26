@@ -30,7 +30,7 @@ class _ProceedGrillingScreenState extends State<ProceedGrillingScreen> {
   Widget build(BuildContext context) {
     if (!_stateMachine.hasGrillState()) {
       _stateMachine.init(context, Utils.getGrillType(widget.args.thickness!),
-          goNextStep, finishGrilling);
+          widget.args, goNextStep, finishGrilling);
     }
 
     ScreenInfo screenInfo = _stateMachine.getScreenInfo();
