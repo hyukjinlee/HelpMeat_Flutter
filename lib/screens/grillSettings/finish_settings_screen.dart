@@ -54,8 +54,8 @@ class _FinishSettingsScreenState extends State<FinishSettingsScreen>
             IndicateText(args: widget.args,),
             Image(
               image: AssetImage(getIndicateImagePath()),
-              width: 150,
-              height: 150,
+              width: 250,
+              height: 250,
             ),
             GestureDetector(
               onTapDown: (details) => _controller.forward(),
@@ -79,7 +79,8 @@ class _FinishSettingsScreenState extends State<FinishSettingsScreen>
   }
 
   String getIndicateImagePath() {
-    return 'assets/beef_well_done.png';
+    final GrillSettingsArguments args = widget.args;
+    return ResourceUtils.getFinishSettingsImagePath(args.meatType, args.griddleInfo!.griddleType);
   }
 
   String getNextButtonImagePath() {

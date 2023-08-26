@@ -124,7 +124,9 @@ class ResourceUtils {
       case MeatType.MEAT_TYPE_PORK:
         return <DonenessInfo>[
           DonenessInfo(name: "RARE", donenessType: DonenessType.RARE, imagePath: 'assets/pork.png'),
+          DonenessInfo(name: "MEDIUM RARE", donenessType: DonenessType.MEDIUM_RARE, imagePath: 'assets/pork_medium.png'), //TODO : 교체필요
           DonenessInfo(name: "MEDIUM", donenessType: DonenessType.MEDIUM, imagePath: 'assets/pork_medium.png'),
+          DonenessInfo(name: "MEDIUM WELLDONE", donenessType: DonenessType.MEDIUM, imagePath: 'assets/pork_well_done.png'), //TODO : 교체필요
           DonenessInfo(name: "WELL DONE", donenessType: DonenessType.WELLDONE, imagePath: 'assets/pork_well_done.png'),
         ];
       default:
@@ -167,6 +169,41 @@ class ResourceUtils {
         return <GriddleInfo>[
           GriddleInfo(name: "전기그릴", griddleType: GriddleType.ELECTRIC_GRILL, imagePath: 'assets/electric_grill.png'),
         ];
+    }
+  }
+
+  /// Finish Settings Screen
+  static String getFinishSettingsImagePath(MeatType meatType, GriddleType griddleType) {
+    switch (meatType) {
+    // 소고기
+      case MeatType.MEAT_TYPE_BEEF:
+        switch (griddleType) {
+          case GriddleType.ELECTRIC_GRILL:
+            return 'assets/beef_complete_electric_grill.png';
+          case GriddleType.GRIDIRON:
+            return 'assets/beef_complete_gridiron.png';
+          case GriddleType.FRYING_PAN:
+            return 'assets/beef_complete_frying_pan.png';
+          case GriddleType.COATING_GRIDDLE:
+            return 'assets/beef_complete_coating_griddle.png';
+          case GriddleType.CALDRON_LID:
+            return 'assets/beef_complete_caldron_lid.png';
+        }
+
+    // 돼지고기
+      case MeatType.MEAT_TYPE_PORK:
+        switch (griddleType) {
+          case GriddleType.ELECTRIC_GRILL:
+            return 'assets/pork_complete_electric_grill.png';
+          case GriddleType.GRIDIRON:
+            return 'assets/pork_complete_gridiron.png';
+          case GriddleType.FRYING_PAN:
+            return 'assets/pork_complete_frying_pan.png';
+          case GriddleType.COATING_GRIDDLE:
+            return 'assets/pork_complete_coating_griddle.png';
+          case GriddleType.CALDRON_LID:
+            return 'assets/pork_complete_caldron_lid.png';
+        }
     }
   }
 }
