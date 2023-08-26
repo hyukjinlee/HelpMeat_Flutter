@@ -11,14 +11,19 @@ class AppThemes {
   static const Radius hard_radius = Radius.circular(40);
 }
 
+class Constants {
+  static const String GRILL_SETTINGS_RESOURCES_PATH = 'assets/grillSettings/';
+  static const String GRILL_PROCESS_RESOURCES_PATH = 'assets/grillProcess/';
+}
+
 /// Resource Utils
 class ResourceUtils {
   static String getMeatImagePath(MeatType meatType) {
     switch (meatType) {
       case MeatType.MEAT_TYPE_PORK:
-        return 'assets/grillSettings/pork.png';
+        return '${Constants.GRILL_SETTINGS_RESOURCES_PATH}pork.png';
       case MeatType.MEAT_TYPE_BEEF:
-        return 'assets/grillSettings/beef.png';
+        return '${Constants.GRILL_SETTINGS_RESOURCES_PATH}beef.png';
       default:
         return "";
     }
@@ -39,27 +44,27 @@ class ResourceUtils {
     switch (meatType) {
       case MeatType.MEAT_TYPE_BEEF:
         return <MeatInfo>[
-          MeatInfo(name: "갈비살", meatPartType: MeatPartType.BEEF_PART_TYPE_GALBI, imagePath: 'assets/grillSettings/beef_galbi.png'),
-          MeatInfo(name: "등심살", meatPartType: MeatPartType.BEEF_PART_TYPE_DEUNGSIM, imagePath: 'assets/grillSettings/beef_deungsim.png'),
-          MeatInfo(name: "부채살", meatPartType: MeatPartType.BEEF_PART_TYPE_BUCHAE, imagePath: 'assets/grillSettings/beef_buchae.png'),
-          MeatInfo(name: "살치살", meatPartType: MeatPartType.BEEF_PART_TYPE_SALCHI, imagePath: 'assets/grillSettings/beef_salchi.png'),
-          MeatInfo(name: "안심", meatPartType: MeatPartType.BEEF_PART_TYPE_ANSIM, imagePath: 'assets/grillSettings/beef_ansim.png'),
-          MeatInfo(name: "안창살", meatPartType: MeatPartType.BEEF_PART_TYPE_ANCHANG, imagePath: 'assets/grillSettings/beef_anchang.png'),
-          MeatInfo(name: "제비추리", meatPartType: MeatPartType.BEEF_PART_TYPE_JEBICHURI, imagePath: 'assets/grillSettings/beef_jebichuri.png'),
-          MeatInfo(name: "채끝살", meatPartType: MeatPartType.BEEF_PART_TYPE_CHAEKKEUT, imagePath: 'assets/grillSettings/beef_chaekkeut.png'),
-          MeatInfo(name: "토시살", meatPartType: MeatPartType.BEEF_PART_TYPE_TOSI, imagePath: 'assets/grillSettings/beef_tosi.png'),];
+          MeatInfo(name: "갈비살", meatPartType: MeatPartType.BEEF_PART_TYPE_GALBI, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}beef_galbi.png'),
+          MeatInfo(name: "등심살", meatPartType: MeatPartType.BEEF_PART_TYPE_DEUNGSIM, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}beef_deungsim.png'),
+          MeatInfo(name: "부채살", meatPartType: MeatPartType.BEEF_PART_TYPE_BUCHAE, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}beef_buchae.png'),
+          MeatInfo(name: "살치살", meatPartType: MeatPartType.BEEF_PART_TYPE_SALCHI, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}beef_salchi.png'),
+          MeatInfo(name: "안심", meatPartType: MeatPartType.BEEF_PART_TYPE_ANSIM, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}beef_ansim.png'),
+          MeatInfo(name: "안창살", meatPartType: MeatPartType.BEEF_PART_TYPE_ANCHANG, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}beef_anchang.png'),
+          MeatInfo(name: "제비추리", meatPartType: MeatPartType.BEEF_PART_TYPE_JEBICHURI, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}beef_jebichuri.png'),
+          MeatInfo(name: "채끝살", meatPartType: MeatPartType.BEEF_PART_TYPE_CHAEKKEUT, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}beef_chaekkeut.png'),
+          MeatInfo(name: "토시살", meatPartType: MeatPartType.BEEF_PART_TYPE_TOSI, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}beef_tosi.png'),];
 
       case MeatType.MEAT_TYPE_PORK:
         return <MeatInfo>[
-          MeatInfo(name: "갈비살", meatPartType: MeatPartType.PORK_PART_TYPE_GALBI, imagePath: 'assets/grillSettings/pork_galbi.png'),
-          MeatInfo(name: "갈매기살", meatPartType: MeatPartType.PORK_PART_TYPE_GALMAEGI, imagePath: 'assets/grillSettings/pork_galmaegi.png'),
-          MeatInfo(name: "뒷다리살", meatPartType: MeatPartType.PORK_PART_TYPE_DUITDARI, imagePath: 'assets/grillSettings/pork_duitdari.png'),
-          MeatInfo(name: "등심", meatPartType: MeatPartType.PORK_PART_TYPE_DEUNGSIM, imagePath: 'assets/grillSettings/pork_deungsim.png'),
-          MeatInfo(name: "목살", meatPartType: MeatPartType.PORK_PART_TYPE_MOKSAL, imagePath: 'assets/grillSettings/pork_moksal.png'),
-          MeatInfo(name: "안심", meatPartType: MeatPartType.PORK_PART_TYPE_ANSIM, imagePath: 'assets/grillSettings/pork_ansim.png'),
-          MeatInfo(name: "앞다리살", meatPartType: MeatPartType.PORK_PART_TYPE_ABDARI, imagePath: 'assets/grillSettings/pork_abdari.png'),
-          MeatInfo(name: "삼겹살", meatPartType: MeatPartType.PORK_PART_TYPE_SAMGYEUP, imagePath: 'assets/grillSettings/pork_samgyeup.png'),
-          MeatInfo(name: "항정살", meatPartType: MeatPartType.PORK_PART_TYPE_HANGJEONG, imagePath: 'assets/grillSettings/pork_hangjeong.png'),];
+          MeatInfo(name: "갈비살", meatPartType: MeatPartType.PORK_PART_TYPE_GALBI, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}pork_galbi.png'),
+          MeatInfo(name: "갈매기살", meatPartType: MeatPartType.PORK_PART_TYPE_GALMAEGI, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}pork_galmaegi.png'),
+          MeatInfo(name: "뒷다리살", meatPartType: MeatPartType.PORK_PART_TYPE_DUITDARI, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}pork_duitdari.png'),
+          MeatInfo(name: "등심", meatPartType: MeatPartType.PORK_PART_TYPE_DEUNGSIM, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}pork_deungsim.png'),
+          MeatInfo(name: "목살", meatPartType: MeatPartType.PORK_PART_TYPE_MOKSAL, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}pork_moksal.png'),
+          MeatInfo(name: "안심", meatPartType: MeatPartType.PORK_PART_TYPE_ANSIM, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}pork_ansim.png'),
+          MeatInfo(name: "앞다리살", meatPartType: MeatPartType.PORK_PART_TYPE_ABDARI, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}pork_abdari.png'),
+          MeatInfo(name: "삼겹살", meatPartType: MeatPartType.PORK_PART_TYPE_SAMGYEUP, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}pork_samgyeup.png'),
+          MeatInfo(name: "항정살", meatPartType: MeatPartType.PORK_PART_TYPE_HANGJEONG, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}pork_hangjeong.png'),];
       default:
         throw Exception();
     }
@@ -114,20 +119,20 @@ class ResourceUtils {
     switch (meatType) {
       case MeatType.MEAT_TYPE_BEEF:
         return <DonenessInfo>[
-          DonenessInfo(name: "RARE", donenessType: DonenessType.RARE, imagePath: 'assets/grillSettings/beef.png'),
-          DonenessInfo(name: "MEDIUM RARE", donenessType: DonenessType.MEDIUM_RARE, imagePath: 'assets/grillSettings/beef_medium_rare.png'),
-          DonenessInfo(name: "MEDIUM", donenessType: DonenessType.MEDIUM, imagePath: 'assets/grillSettings/beef_medium.png'),
-          DonenessInfo(name: "MEDIUM WELLDONE", donenessType: DonenessType.MEDIUM, imagePath: 'assets/grillSettings/beef_medium.png'),
-          DonenessInfo(name: "WELLDONE", donenessType: DonenessType.WELLDONE, imagePath: 'assets/grillSettings/beef_well_done.png'),
+          DonenessInfo(name: "RARE", donenessType: DonenessType.RARE, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}beef.png'),
+          DonenessInfo(name: "MEDIUM RARE", donenessType: DonenessType.MEDIUM_RARE, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}beef_medium_rare.png'),
+          DonenessInfo(name: "MEDIUM", donenessType: DonenessType.MEDIUM, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}beef_medium.png'),
+          DonenessInfo(name: "MEDIUM WELLDONE", donenessType: DonenessType.MEDIUM, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}beef_medium.png'),
+          DonenessInfo(name: "WELLDONE", donenessType: DonenessType.WELLDONE, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}beef_well_done.png'),
         ];
 
       case MeatType.MEAT_TYPE_PORK:
         return <DonenessInfo>[
-          DonenessInfo(name: "RARE", donenessType: DonenessType.RARE, imagePath: 'assets/grillSettings/pork.png'),
-          DonenessInfo(name: "MEDIUM RARE", donenessType: DonenessType.MEDIUM_RARE, imagePath: 'assets/grillSettings/pork_medium.png'), //TODO : 교체필요
-          DonenessInfo(name: "MEDIUM", donenessType: DonenessType.MEDIUM, imagePath: 'assets/grillSettings/pork_medium.png'),
-          DonenessInfo(name: "MEDIUM WELLDONE", donenessType: DonenessType.MEDIUM, imagePath: 'assets/grillSettings/pork_well_done.png'), //TODO : 교체필요
-          DonenessInfo(name: "WELL DONE", donenessType: DonenessType.WELLDONE, imagePath: 'assets/grillSettings/pork_well_done.png'),
+          DonenessInfo(name: "RARE", donenessType: DonenessType.RARE, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}pork.png'),
+          DonenessInfo(name: "MEDIUM RARE", donenessType: DonenessType.MEDIUM_RARE, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}pork_medium.png'), //TODO : 교체필요
+          DonenessInfo(name: "MEDIUM", donenessType: DonenessType.MEDIUM, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}pork_medium.png'),
+          DonenessInfo(name: "MEDIUM WELLDONE", donenessType: DonenessType.MEDIUM, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}pork_well_done.png'), //TODO : 교체필요
+          DonenessInfo(name: "WELL DONE", donenessType: DonenessType.WELLDONE, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}pork_well_done.png'),
         ];
       default:
         throw Exception();
@@ -137,11 +142,11 @@ class ResourceUtils {
   /// Fire Screen
   static List<FireInfo> getFireInfoList() {
     return <FireInfo>[
-      FireInfo(name: "연탄", fireType: FireType.BRIQUETTE, imagePath: 'assets/grillSettings/briquette.png'),
-      FireInfo(name: "숯불", fireType: FireType.CHARCOAL, imagePath: 'assets/grillSettings/charcoal.png'),
-      FireInfo(name: "버너", fireType: FireType.GAS_STOVE, imagePath: 'assets/grillSettings/gas_stove.png'),
-      FireInfo(name: "인덕션", fireType: FireType.INDUCTION, imagePath: 'assets/grillSettings/induction.png'),
-      FireInfo(name: "전기 그릴", fireType: FireType.ELECTRIC_GRILL, imagePath: 'assets/grillSettings/electric_grill.png'),
+      FireInfo(name: "연탄", fireType: FireType.BRIQUETTE, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}briquette.png'),
+      FireInfo(name: "숯불", fireType: FireType.CHARCOAL, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}charcoal.png'),
+      FireInfo(name: "버너", fireType: FireType.GAS_STOVE, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}gas_stove.png'),
+      FireInfo(name: "인덕션", fireType: FireType.INDUCTION, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}induction.png'),
+      FireInfo(name: "전기 그릴", fireType: FireType.ELECTRIC_GRILL, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}electric_grill.png'),
     ];
   }
 
@@ -151,23 +156,23 @@ class ResourceUtils {
       case FireType.BRIQUETTE:
       case FireType.CHARCOAL:
         return <GriddleInfo>[
-          GriddleInfo(name: "솥뚜껑", griddleType: GriddleType.CALDRON_LID, imagePath: 'assets/grillSettings/caldron_lid.png'),
-          GriddleInfo(name: "코팅 불판", griddleType: GriddleType.COATING_GRIDDLE, imagePath: 'assets/grillSettings/coating_griddle.png'),
-          GriddleInfo(name: "석쇠", griddleType: GriddleType.GRIDIRON, imagePath: 'assets/grillSettings/gridiron.png'),
+          GriddleInfo(name: "솥뚜껑", griddleType: GriddleType.CALDRON_LID, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}caldron_lid.png'),
+          GriddleInfo(name: "코팅 불판", griddleType: GriddleType.COATING_GRIDDLE, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}coating_griddle.png'),
+          GriddleInfo(name: "석쇠", griddleType: GriddleType.GRIDIRON, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}gridiron.png'),
         ];
       case FireType.GAS_STOVE:
         return <GriddleInfo>[
-          GriddleInfo(name: "솥뚜껑", griddleType: GriddleType.CALDRON_LID, imagePath: 'assets/grillSettings/caldron_lid.png'),
-          GriddleInfo(name: "코팅 불판", griddleType: GriddleType.COATING_GRIDDLE, imagePath: 'assets/grillSettings/coating_griddle.png'),
-          GriddleInfo(name: "프라이팬", griddleType: GriddleType.FRYING_PAN, imagePath: 'assets/grillSettings/frying_pan.png'),
+          GriddleInfo(name: "솥뚜껑", griddleType: GriddleType.CALDRON_LID, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}caldron_lid.png'),
+          GriddleInfo(name: "코팅 불판", griddleType: GriddleType.COATING_GRIDDLE, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}coating_griddle.png'),
+          GriddleInfo(name: "프라이팬", griddleType: GriddleType.FRYING_PAN, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}frying_pan.png'),
         ];
       case FireType.INDUCTION:
         return <GriddleInfo>[
-          GriddleInfo(name: "프라이팬", griddleType: GriddleType.FRYING_PAN, imagePath: 'assets/grillSettings/frying_pan.png'),
+          GriddleInfo(name: "프라이팬", griddleType: GriddleType.FRYING_PAN, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}frying_pan.png'),
         ];
       case FireType.ELECTRIC_GRILL:
         return <GriddleInfo>[
-          GriddleInfo(name: "전기그릴", griddleType: GriddleType.ELECTRIC_GRILL, imagePath: 'assets/grillSettings/electric_grill.png'),
+          GriddleInfo(name: "전기그릴", griddleType: GriddleType.ELECTRIC_GRILL, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}electric_grill.png'),
         ];
     }
   }
@@ -179,30 +184,30 @@ class ResourceUtils {
       case MeatType.MEAT_TYPE_BEEF:
         switch (griddleType) {
           case GriddleType.ELECTRIC_GRILL:
-            return 'assets/grillSettings/beef_complete_electric_grill.png';
+            return '${Constants.GRILL_SETTINGS_RESOURCES_PATH}beef_complete_electric_grill.png';
           case GriddleType.GRIDIRON:
-            return 'assets/grillSettings/beef_complete_gridiron.png';
+            return '${Constants.GRILL_SETTINGS_RESOURCES_PATH}beef_complete_gridiron.png';
           case GriddleType.FRYING_PAN:
-            return 'assets/grillSettings/beef_complete_frying_pan.png';
+            return '${Constants.GRILL_SETTINGS_RESOURCES_PATH}beef_complete_frying_pan.png';
           case GriddleType.COATING_GRIDDLE:
-            return 'assets/grillSettings/beef_complete_coating_griddle.png';
+            return '${Constants.GRILL_SETTINGS_RESOURCES_PATH}beef_complete_coating_griddle.png';
           case GriddleType.CALDRON_LID:
-            return 'assets/grillSettings/beef_complete_caldron_lid.png';
+            return '${Constants.GRILL_SETTINGS_RESOURCES_PATH}beef_complete_caldron_lid.png';
         }
 
     // 돼지고기
       case MeatType.MEAT_TYPE_PORK:
         switch (griddleType) {
           case GriddleType.ELECTRIC_GRILL:
-            return 'assets/grillSettings/pork_complete_electric_grill.png';
+            return '${Constants.GRILL_SETTINGS_RESOURCES_PATH}pork_complete_electric_grill.png';
           case GriddleType.GRIDIRON:
-            return 'assets/grillSettings/pork_complete_gridiron.png';
+            return '${Constants.GRILL_SETTINGS_RESOURCES_PATH}pork_complete_gridiron.png';
           case GriddleType.FRYING_PAN:
-            return 'assets/grillSettings/pork_complete_frying_pan.png';
+            return '${Constants.GRILL_SETTINGS_RESOURCES_PATH}pork_complete_frying_pan.png';
           case GriddleType.COATING_GRIDDLE:
-            return 'assets/grillSettings/pork_complete_coating_griddle.png';
+            return '${Constants.GRILL_SETTINGS_RESOURCES_PATH}pork_complete_coating_griddle.png';
           case GriddleType.CALDRON_LID:
-            return 'assets/grillSettings/pork_complete_caldron_lid.png';
+            return '${Constants.GRILL_SETTINGS_RESOURCES_PATH}pork_complete_caldron_lid.png';
         }
     }
   }

@@ -60,7 +60,7 @@ class IndicateImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Image(
-      image: AssetImage('assets/grillSettings/beef_well_done.png'),
+      image: AssetImage('${Constants.GRILL_SETTINGS_RESOURCES_PATH}beef_well_done.png'),
       width: 250,
       height: 250,
     );

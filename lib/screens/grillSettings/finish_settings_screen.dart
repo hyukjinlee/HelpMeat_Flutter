@@ -84,7 +84,7 @@ class _FinishSettingsScreenState extends State<FinishSettingsScreen>
   }
 
   String getNextButtonImagePath() {
-    return 'assets/grillSettings/finish_settings_button_image.png';
+    return '${Constants.GRILL_SETTINGS_RESOURCES_PATH}finish_settings_button_image.png';
   }
 }
 
