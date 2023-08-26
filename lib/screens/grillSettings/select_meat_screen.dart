@@ -41,7 +41,7 @@ class SelectMeatScreen extends StatelessWidget {
   }
 
   String getIndicateImagePath() {
-    return 'assets/question_mark.png';
+    return 'assets/grillSettings/question_mark.png';
   }
 }
 

@@ -58,7 +58,7 @@ class _SelectThicknessScreenState extends State<SelectThicknessScreen> {
                         child: Stack(
                           children: [
                             Image(
-                              image: AssetImage('assets/horizontal_sign.png'),
+                              image: AssetImage('assets/grillSettings/horizontal_sign.png'),
                               width: signWidth,
                               height: signHeight,
                             ),
@@ -106,7 +106,7 @@ class _SelectThicknessScreenState extends State<SelectThicknessScreen> {
           ),
           Image(
             key: _rulerKey,
-            image: AssetImage('assets/ruler.png'),
+            image: AssetImage('assets/grillSettings/ruler.png'),
             width: 90,
             height: 280,
           ),
