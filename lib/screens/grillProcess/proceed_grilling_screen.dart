@@ -35,6 +35,7 @@ class _ProceedGrillingScreenState extends State<ProceedGrillingScreen> {
 
     ScreenInfo screenInfo = _stateMachine.getScreenInfo();
     if (_isNextPageOfTimer(screenInfo)) {
+      TaskManager.cancel();
       AlarmManager.stop();
     }
 
@@ -102,6 +103,7 @@ class _ProceedGrillingScreenState extends State<ProceedGrillingScreen> {
                 invertColor: true,
                 onPressed: () => {
                   TaskManager.cancel(),
+                  AlarmManager.stop(),
                   Navigator.of(context).pop(true)
                 },
               ),

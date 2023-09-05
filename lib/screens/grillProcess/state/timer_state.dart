@@ -167,7 +167,7 @@ class _TimerWidgetState extends State<TimerWidget> with SingleTickerProviderStat
       })
       ..addStatusListener((status) {
         if (status == AnimationStatus.forward) {
-          TaskManager.postDelayed(_settingValue - 1, () {
+          TaskManager.postDelayed(_settingValue, () {
             AlarmManager.start();
           });
         } else if (status == AnimationStatus.completed) {

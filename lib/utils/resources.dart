@@ -122,16 +122,16 @@ class ResourceUtils {
           DonenessInfo(name: "RARE", donenessType: DonenessType.RARE, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}beef.png'),
           DonenessInfo(name: "MEDIUM RARE", donenessType: DonenessType.MEDIUM_RARE, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}beef_medium_rare.png'),
           DonenessInfo(name: "MEDIUM", donenessType: DonenessType.MEDIUM, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}beef_medium.png'),
-          DonenessInfo(name: "MEDIUM WELLDONE", donenessType: DonenessType.MEDIUM, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}beef_medium.png'),
+          DonenessInfo(name: "MEDIUM WELLDONE", donenessType: DonenessType.MEDIUM, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}beef_medium_well_done.png'),
           DonenessInfo(name: "WELLDONE", donenessType: DonenessType.WELLDONE, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}beef_well_done.png'),
         ];
 
       case MeatType.MEAT_TYPE_PORK:
         return <DonenessInfo>[
           DonenessInfo(name: "RARE", donenessType: DonenessType.RARE, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}pork.png'),
-          DonenessInfo(name: "MEDIUM RARE", donenessType: DonenessType.MEDIUM_RARE, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}pork_medium.png'), //TODO : 교체필요
+          DonenessInfo(name: "MEDIUM RARE", donenessType: DonenessType.MEDIUM_RARE, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}pork_medium_rare.png'),
           DonenessInfo(name: "MEDIUM", donenessType: DonenessType.MEDIUM, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}pork_medium.png'),
-          DonenessInfo(name: "MEDIUM WELLDONE", donenessType: DonenessType.MEDIUM, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}pork_well_done.png'), //TODO : 교체필요
+          DonenessInfo(name: "MEDIUM WELLDONE", donenessType: DonenessType.MEDIUM, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}pork_medium_well_done.png'),
           DonenessInfo(name: "WELL DONE", donenessType: DonenessType.WELLDONE, imagePath: '${Constants.GRILL_SETTINGS_RESOURCES_PATH}pork_well_done.png'),
         ];
       default:
