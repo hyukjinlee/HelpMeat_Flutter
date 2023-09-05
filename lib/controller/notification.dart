@@ -40,9 +40,7 @@ class NotificationManager {
         );
   }
 
-  /***
-   *   Timer Notification
-   */
+  ///   Timer Notification
   static Future<void> sendNotificationForTimer() async {
     const AndroidNotificationDetails androidNotificationDetails =
         AndroidNotificationDetails(_CHANNEL_ID, _CHANNEL_NAME,
