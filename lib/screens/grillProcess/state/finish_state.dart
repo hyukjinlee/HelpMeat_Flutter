@@ -19,7 +19,7 @@ class FinishState extends ScreenInfo {
 
   @override
   Widget getMiddleWidget() {
-    return IndicateImage(imagePath: ResourceUtils.getFinishStateImagePath(args.meatType, args.griddleInfo!.griddleType),);
+    return IndicateImage(imagePath: ResourceUtils.getFinishStateImagePath(args.meatType, args.griddleInfo!.griddleType, args.donenessInfo!.donenessType),);
   }
 
   @override

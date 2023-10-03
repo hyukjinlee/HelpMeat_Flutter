@@ -275,34 +275,193 @@ class ResourceUtils {
     }
   }
 
-  static String getFinishStateImagePath(MeatType meatType, GriddleType griddleType) {
+  static String getFinishStateImagePath(MeatType meatType, GriddleType griddleType, DonenessType donenessType) {
     switch (meatType) {
       case MeatType.MEAT_TYPE_BEEF:
-        switch (griddleType) {
-          case GriddleType.ELECTRIC_GRILL:
-            return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_electric_grill_finish.png';
-          case GriddleType.GRIDIRON:
-            return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_gridiron_finish.png';
-          case GriddleType.FRYING_PAN:
-            return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_frying_pan_finish.png';
-          case GriddleType.COATING_GRIDDLE:
-            return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_coating_griddle_finish.png';
-          case GriddleType.CALDRON_LID:
-            return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_caldron_lid_finish.png';
-        }
+        return getFinishStateBeefImagePath(griddleType, donenessType);
       case MeatType.MEAT_TYPE_PORK:
-        switch (griddleType) {
-          case GriddleType.ELECTRIC_GRILL:
-            return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_electric_grill_finish.png';
-          case GriddleType.GRIDIRON:
-            return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_gridiron_finish.png';
-          case GriddleType.FRYING_PAN:
-            return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_frying_pan_finish.png';
-          case GriddleType.COATING_GRIDDLE:
-            return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_coating_griddle_finish.png';
-          case GriddleType.CALDRON_LID:
-            return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_caldron_lid_finish.png';
-        }
+        return getFinishStatePorkImagePath(griddleType, donenessType);
+    }
+  }
+
+  static String getFinishStateBeefImagePath(GriddleType griddleType, DonenessType donenessType) {
+    switch (griddleType) {
+      case GriddleType.ELECTRIC_GRILL:
+        return getFinishStateBeefOnElectricGrillImagePath(donenessType);
+      case GriddleType.GRIDIRON:
+        return getFinishStateBeefOnGridironImagePath(donenessType);
+      case GriddleType.FRYING_PAN:
+        return getFinishStateBeefOnFryingPanImagePath(donenessType);
+      case GriddleType.COATING_GRIDDLE:
+        return getFinishStateBeefOnCoatingGriddleImagePath(donenessType);
+      case GriddleType.CALDRON_LID:
+        return getFinishStateBeefOnCaldronLidImagePath(donenessType);
+    }
+  }
+
+  static String getFinishStateBeefOnElectricGrillImagePath(DonenessType donenessType) {
+    switch (donenessType) {
+      case DonenessType.RARE:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_electric_grill_finish_rare.png';
+      case DonenessType.MEDIUM_RARE:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_electric_grill_finish_medium_rare.png';
+      case DonenessType.MEDIUM:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_electric_grill_finish_medium.png';
+      case DonenessType.MEDIUM_WELLDONE:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_electric_grill_finish_medium_well_done.png';
+      case DonenessType.WELLDONE:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_electric_grill_finish_well_done.png';
+    }
+  }
+
+  static String getFinishStateBeefOnGridironImagePath(DonenessType donenessType) {
+    switch (donenessType) {
+      case DonenessType.RARE:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_gridiron_finish_rare.png';
+      case DonenessType.MEDIUM_RARE:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_gridiron_finish_medium_rare.png';
+      case DonenessType.MEDIUM:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_gridiron_finish_medium.png';
+      case DonenessType.MEDIUM_WELLDONE:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_gridiron_finish_medium_well_done.png';
+      case DonenessType.WELLDONE:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_gridiron_finish_well_done.png';
+    }
+  }
+
+  static String getFinishStateBeefOnFryingPanImagePath(DonenessType donenessType) {
+    switch (donenessType) {
+      case DonenessType.RARE:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_frying_pan_finish_rare.png';
+      case DonenessType.MEDIUM_RARE:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_frying_pan_finish_medium_rare.png';
+      case DonenessType.MEDIUM:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_frying_pan_finish_medium.png';
+      case DonenessType.MEDIUM_WELLDONE:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_frying_pan_finish_medium_well_done.png';
+      case DonenessType.WELLDONE:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_frying_pan_finish_well_done.png';
+    }
+  }
+
+  static String getFinishStateBeefOnCoatingGriddleImagePath(DonenessType donenessType) {
+    switch (donenessType) {
+      case DonenessType.RARE:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_coating_griddle_finish_rare.png';
+      case DonenessType.MEDIUM_RARE:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_coating_griddle_finish_medium_rare.png';
+      case DonenessType.MEDIUM:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_coating_griddle_finish_medium.png';
+      case DonenessType.MEDIUM_WELLDONE:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_coating_griddle_finish_medium_well_done.png';
+      case DonenessType.WELLDONE:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_coating_griddle_finish_well_done.png';
+    }
+  }
+
+  static String getFinishStateBeefOnCaldronLidImagePath(DonenessType donenessType) {
+    switch (donenessType) {
+      case DonenessType.RARE:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_caldron_lid_finish_rare.png';
+      case DonenessType.MEDIUM_RARE:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_caldron_lid_finish_medium_rare.png';
+      case DonenessType.MEDIUM:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_caldron_lid_finish_medium.png';
+      case DonenessType.MEDIUM_WELLDONE:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_caldron_lid_finish_medium_well_done.png';
+      case DonenessType.WELLDONE:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}beef_caldron_lid_finish_well_done.png';
+    }
+  }
+
+  static String getFinishStatePorkImagePath(GriddleType griddleType, DonenessType donenessType) {
+    switch (griddleType) {
+      case GriddleType.ELECTRIC_GRILL:
+        return getFinishStatePorkOnElectricGrillImagePath(donenessType);
+      case GriddleType.GRIDIRON:
+        return getFinishStatePorkOnGridironImagePath(donenessType);
+      case GriddleType.FRYING_PAN:
+        return getFinishStatePorkOnFryingPanImagePath(donenessType);
+      case GriddleType.COATING_GRIDDLE:
+        return getFinishStatePorkOnCoatingGriddleImagePath(donenessType);
+      case GriddleType.CALDRON_LID:
+        return getFinishStatePorkOnCaldronLidImagePath(donenessType);
+    }
+  }
+
+
+  static String getFinishStatePorkOnElectricGrillImagePath(DonenessType donenessType) {
+    switch (donenessType) {
+      case DonenessType.RARE:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_electric_grill_finish_rare.png';
+      case DonenessType.MEDIUM_RARE:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_electric_grill_finish_medium_rare.png';
+      case DonenessType.MEDIUM:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_electric_grill_finish_medium.png';
+      case DonenessType.MEDIUM_WELLDONE:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_electric_grill_finish_medium_well_done.png';
+      case DonenessType.WELLDONE:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_electric_grill_finish_well_done.png';
+    }
+  }
+
+  static String getFinishStatePorkOnGridironImagePath(DonenessType donenessType) {
+    switch (donenessType) {
+      case DonenessType.RARE:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_gridiron_finish_rare.png';
+      case DonenessType.MEDIUM_RARE:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_gridiron_finish_medium_rare.png';
+      case DonenessType.MEDIUM:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_gridiron_finish_medium.png';
+      case DonenessType.MEDIUM_WELLDONE:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_gridiron_finish_medium_well_done.png';
+      case DonenessType.WELLDONE:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_gridiron_finish_well_done.png';
+    }
+  }
+
+  static String getFinishStatePorkOnFryingPanImagePath(DonenessType donenessType) {
+    switch (donenessType) {
+      case DonenessType.RARE:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_frying_pan_finish_rare.png';
+      case DonenessType.MEDIUM_RARE:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_frying_pan_finish_medium_rare.png';
+      case DonenessType.MEDIUM:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_frying_pan_finish_medium.png';
+      case DonenessType.MEDIUM_WELLDONE:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_frying_pan_finish_medium_well_done.png';
+      case DonenessType.WELLDONE:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_frying_pan_finish_well_done.png';
+    }
+  }
+
+  static String getFinishStatePorkOnCoatingGriddleImagePath(DonenessType donenessType) {
+    switch (donenessType) {
+      case DonenessType.RARE:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_coating_griddle_finish_rare.png';
+      case DonenessType.MEDIUM_RARE:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_coating_griddle_finish_medium_rare.png';
+      case DonenessType.MEDIUM:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_coating_griddle_finish_medium.png';
+      case DonenessType.MEDIUM_WELLDONE:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_coating_griddle_finish_medium_well_done.png';
+      case DonenessType.WELLDONE:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_coating_griddle_finish_well_done.png';
+    }
+  }
+
+  static String getFinishStatePorkOnCaldronLidImagePath(DonenessType donenessType) {
+    switch (donenessType) {
+      case DonenessType.RARE:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_caldron_lid_finish_rare.png';
+      case DonenessType.MEDIUM_RARE:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_caldron_lid_finish_medium_rare.png';
+      case DonenessType.MEDIUM:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_caldron_lid_finish_medium.png';
+      case DonenessType.MEDIUM_WELLDONE:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_caldron_lid_finish_medium_well_done.png';
+      case DonenessType.WELLDONE:
+        return '${Constants.GRILL_PROCESS_RESOURCES_PATH}pork_caldron_lid_finish_well_done.png';
     }
   }
 
